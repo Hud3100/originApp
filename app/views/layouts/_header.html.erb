@@ -1,14 +1,30 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <nav>
-      <% if user_signed_in? %>
-        <strong><%= current_user.name%></strong>
-        <%= link_to 'プロフィール変更', edit_user_registration_path %>
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'サインアップ', new_user_registration_path %>
-        <%= link_to 'ログイン', new_user_session_path %>
-      <% end %>
+  <div class="container-fluid">
+    <%= link_to "Car Build", root_path, id: "logo" %>
+      <div class="navbar-header">
+      <ul class="list-inline">
+        <li class="list-inline-item"><%= link_to "Home", root_path %></li>
+        <li class="list-inline-item"><%= link_to "Help", "#" %></li>
+        <% if user_signed_in? %>
+        <p>こんにちは、<%= current_user.name%>さん</p>
+          <li class="dropdown list-inline-item">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Account <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Mypage", "#" %></li>
+              <li><%= link_to "Settings", edit_user_registration_path %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <%= link_to 'サインアップ', new_user_registration_path %>
+          <%= link_to 'ログイン', new_user_session_path %>
+        <% end %>
+      </ul>
     </nav>
-  <div>
+  </div>
 </header>
