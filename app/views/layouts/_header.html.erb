@@ -1,30 +1,43 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container-fluid">
-    <%= link_to "Car Build", root_path, id: "logo" %>
-      <div class="navbar-header">
-      <ul class="list-inline">
-        <li class="list-inline-item"><%= link_to "Home", root_path %></li>
-        <li class="list-inline-item"><%= link_to "Help", "#" %></li>
-        <% if user_signed_in? %>
-        <p>こんにちは、<%= current_user.name%>さん</p>
-          <li class="dropdown list-inline-item">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Mypage", "#" %></li>
-              <li><%= link_to "Settings", edit_user_registration_path %></li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-              </li>
-            </ul>
-          </li>
-        <% else %>
-          <%= link_to 'サインアップ', new_user_registration_path %>
-          <%= link_to 'ログイン', new_user_session_path %>
-        <% end %>
-      </ul>
-    </nav>
+<header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href=<%= root_path %>>Renovation For Car</a>
+  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="Navber">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href=<%= root_path %>>ホーム <span class="sr-only">(現位置)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">外装をカスタム</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">内装をカスタム</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">板金修理</a>
+      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link" href="#">マイページ</a>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <a class="nav-link" href=<%= new_user_registration_path %>>利用登録</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ログイン</a>
+        </li>
+      <% end %>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input type="search" class="form-control mr-sm-2" placeholder="好みのカスタムを見つけよう..." aria-label="検索...">
+      <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button>
+    </form>
   </div>
+</nav>
 </header>

@@ -1,7 +1,17 @@
 @import "bootstrap";
 
-.container-fluid {
-  padding-top: 60px;
+body {
+  font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
 }
 
+.container-fluid {
+  padding: 0px;
+}
 
+.navbar-brand {
+  font-weight: bold;
+}
+
+#navmenu1 {
+  display: inline-block;
+}
