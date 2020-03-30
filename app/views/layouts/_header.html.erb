@@ -18,6 +18,9 @@
       <li class="nav-item">
         <a class="nav-link" href="#">板金修理</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href=<%= new_user_registration_path %>>登録</a>
+      </li>
       <% if user_signed_in? %>
         <li class="nav-item">
           <a class="nav-link" href="#">マイページ</a>
@@ -31,6 +34,15 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">ログイン</a>
+        </li>
+      <% end %>
+      <% if company_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link" href="#">カスタマーショップマイページ</a>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <a class="nav-link" href="#">カスタマーショップの方はこちらへ</a>
         </li>
       <% end %>
     </ul>
