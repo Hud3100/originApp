@@ -1,0 +1,36 @@
+@import "bootstrap";
+
+body {
+  font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+}
+
+.flash {
+  color: $white;
+  text-align: center;
+  &__alert {
+    background-color: red;
+  }
+  &__notice {
+    background-color: $blue;
+  }
+}
+
+.container-fluid {
+  padding: 0px;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+#navmenu1 {
+  display: inline-block;
+}
+
+.jumbortron {
+  height: 500px;
+  background-image: url("<%= asset_path('main.jpeg') %>");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
