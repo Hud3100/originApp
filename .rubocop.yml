@@ -1,0 +1,23 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'bin/*'
+    - 'config/environments/*'
+    - 'config/application.rb'
+    - 'config/initializers/*'
+    - 'config/spring.rb'
+    - 'config/routes.rb'
+    - 'spec/spec_helper.rb'
+    - 'lib/tasks/*'
+    - 'vendor/**/*'
+    - 'path/ruby'
+
+RSpec/EmptyLineAfterFinalLet:
+  Enabled: false
+
+Airbnb/ModuleMethodInWrongFile:
+  Description: Define a module method in the file that defines the module, not a file that happens to use the module as a namespace.
+  Enabled: false

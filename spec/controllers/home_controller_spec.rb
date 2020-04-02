@@ -11,6 +11,5 @@ describe HomeController, type: :controller do
     it "レスポンスが成功する" do
       expect(response).to be_success
     end
-
   end
 end
