@@ -1,24 +1,24 @@
 <div class="d-flex align-items-center form-group">
-    <h1>投稿</h1>
+  <h1>投稿</h1>
 </div>
 <%= form_for @micropost do |f| %>
-    <div class="form-group">
-        <%= f.label :car_name, "車種" %>
-        <%= f.text_field :car_name, class: 'form-control', placeholder: '愛車名' %>
-        <div class="form-group">
-            <%= f.label :budget, '費用' %>
-            <div class="col-xs-2 form-inline">
-                <%= f.text_field :budget, class: 'form-control'%>万
-            </div>
-        </div>
-        <%= f.label :content, '質問内容' %>
-        <%= f.text_area :content, class: 'form-control', rows:10 %>
-        <small id="content-tip" class="form-text text-muted">
-            どういうカスタムにしたいですか？
-        </small>
-        <%= f.submit '投稿', class: 'btn btn-info btn-block btn-lg' %>
-        <small id="submit-tip" class="form-text text-muted form-group">
-            投稿する前に投稿内容を見直してください!
-        </small>
-    </div>
+	<div class="form-group">
+		<%= f.label :car_name, "車種" %>
+		<%= f.text_field :car_name, class: 'form-control', placeholder: '愛車名' %>
+		<div class="form-group">
+			<%= f.label :budget, '費用' %>
+			<div class="col-xs-2 form-inline">
+				<%= f.text_field :budget, class: 'form-control'%>万
+			</div>
+		</div>
+		<%= f.label :content, '質問内容' %>
+		<%= f.text_area :content, class: 'form-control', rows:10 %>
+		<small id="content-tip" class="form-text text-muted">
+			どういうカスタムにしたいですか？
+		</small>
+		<%= f.submit '投稿', class: 'btn btn-info btn-block btn-lg' %>
+		<small id="submit-tip" class="form-text text-muted form-group">
+			投稿する前に投稿内容を見直してください!
+		</small>
+	</div>
 <% end %>
