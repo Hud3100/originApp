@@ -6,10 +6,7 @@ $(document).on('turbolinks:load', function(){
                       <img src="" alt="preview" width: 50px height: 50px>
                     </div>
                     <div class="lower-box">
-                      <div class="update-box">
-                        <label class="edit_btn">編集</label>
-                      </div>
-                      <div class="delete-box" id="delete_btn_${count}">
+                      <div class="delete-box btn-flat-dashed-border" id="delete_btn_${count}">
                         <span>削除</span>
                       </div>
                     </div>
@@ -18,12 +15,10 @@ $(document).on('turbolinks:load', function(){
    }
    function setLabel() {
      var prevContent = $('.label-content').prev();
-     var labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
+     var labelWidth = (1275 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
      $('.label-content').css('width', labelWidth);
    }
-
    $(document).on('change', '.hidden-field', function() {
-
      setLabel();
      var id = $(this).attr('id').replace(/[^0-9]/g, '');
      $('.label-box').attr({id: `label-box--${id}`, for: `micropost_images_attributes_${id}_img`});
