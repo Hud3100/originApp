@@ -1,19 +1,25 @@
 <%= javascript_include_tag "new_item.js" %>
-<div class="form">
+<div class="form-group-micropost ">
   <%= form_for @micropost do |f| %>
     <div class="form_information">
       <%= f.label :content, :内容 %>
-      <%= f.text_field :content %>
-      <%= f.label :budget, :予算 %>
-      <%= f.text_field :budget %>
-      <%= f.label :car_name, :車の名前 %>
-      <%= f.text_field :car_name %>
+      <%= f.text_area :content, class: "form-control", rows: 10 %>
+      <div class="form-group" >
+        <div class = "col-xs-4">
+          <%= f.label :budget, :予算 %></br>
+          <%= f.text_field :budget, class: "budget_field" %>&nbsp;万円</br>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :car_name, :車の名前 %>
+        <%= f.text_field :car_name, class: "form-control" %>
+      </div>
     </div>
     <div class= "post__drop__box__container">
       <div class="preview-content"></div>
       <div class="label-content">
         <label class="label-box" for="micropost_images_attributes_0_img" id="label-box--0">
-          <pre class="label-box__text-visible">クリックしてファイルをアップロード</pre>
+          <pre class="label-box__text-visible">クリックして写真をアップロード</pre>
         </label>
       </div>
       <div class="hidden-content">
@@ -25,10 +31,9 @@
           <input class="hidden-field" type="file" name="micropost[images_attributes][4][img]" id="micropost_images_attributes_4_img">
         <% end %>
       </div>
+        <div class="button_wrapper">
+          <%= f.submit "投稿する", class:"btn btn-primary btn-block"%>
+        </div>
+      <% end %>
     </div>
-
-    </br>
-    </br>
-  <%= f.submit %>
-  <% end %>
 </div>

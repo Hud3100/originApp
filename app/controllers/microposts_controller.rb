@@ -1,4 +1,6 @@
 class MicropostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
     @microposts = Micropost.all
   end
@@ -10,7 +12,13 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.create(micropost_params)
-    @micropost.save
+    if @micropost.save
+      flash[:success] = '投稿されました'
+      redirect_to microposts_path
+    else
+      flash[:warning] = '投稿に失敗しました'
+      render :new
+    end
   end
 
   def show
