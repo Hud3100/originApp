@@ -1,3 +1,56 @@
+.micropost-list {
+  margin: 0 auto;
+}
+
+#micropost-main {
+  border-radius: 10px;
+  background: #F2F2F2;
+  padding: 7px;
+  display: flex;
+}
+
+.micropost-title {
+  color: #3300FF;
+  width: 90%;
+}
+
+.micropost-summary {
+  width: 50%;
+}
+
+.micropost-content {
+  width: 90%;
+  font-size: 12px;
+  margin-top: 10px;
+  border-top: solid 1px gray;
+}
+
+.micropost-info {
+  display: flex;
+  width: 50%;
+  font-size: 15px;
+  position: relative;
+}
+
+.micropost-date{
+  font-size: 10px;
+  color: gray;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.micropost-car-name {
+  width: 50%;
+  text-align:center;
+}
+
+.micropost-budget {
+  width: 50%;
+  text-align:center;
+}
+
+
 .budget_field {
   float: left;
   width: 15%;

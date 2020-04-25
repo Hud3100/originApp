@@ -1,12 +1,21 @@
-<div class="card w-50 mx-auto">
-  <%= image_tag 'main.jpg', height: "300px" %>
-  <h3 class="card-header">こんなカスタムしたいです！</h3>
-
-  <div class="card-body">
-    <%= micropost.content %>
+<div id="micropost-main">
+  <div class="micropost-summary">
+    <div class="micropost-title"><%= micropost.title %></div>
+    <div class="micropost-content">
+      <p><%= micropost.content.truncate(140, separator: '.') %></p>
+    </div>
   </div>
-  <div class="card-footer">フッター</div>
-  <a href="#" class="btn btn-primary">この愛車にカスタムを提案してみる!</a>
+  <div class="micropost-info">
+    <div class="micropost-car-name">
+      <p>車種</p>
+      <p>ロードスター</p>
+    </div>
+    <div class="micropost-budget">
+      <p>予算</p>
+      <p><%= micropost.budget %>万円</p>
+    </div>
+    <div class="micropost-date">
+      <p>掲載日  <%= micropost.created_at %></p>
+    </div>
+  </div>
 </div>
-
-<%= micropost.user.name %>

@@ -1,9 +1,10 @@
-<div class="d-flex align-items-center">
-    <h1>投稿一覧</h1>
-    <div class="ml-auto posts_button">
-        <a class="btn btn-outline-info" href="/posts/new" role="button">投稿</a>
-    </div>
+<div class="container">
+<h2 class="font-weight-bold">投稿一覧</h2>
+  <div class="micropost_list d-flex align-items-center">
+  <div class="ml-auto posts_button">
+  <a class="btn btn-outline-info" href="/posts/new" role="button">投稿</a>
 </div>
-<div class="center-block">
-    <%= render @microposts %>
+</div>
+<div class="micropost-list col-lg-8">
+  <%= render @microposts %>
 </div>
