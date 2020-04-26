@@ -15,7 +15,7 @@
       <p><%= micropost.budget %>万円</p>
     </div>
     <div class="micropost-date">
-      <p>掲載日  <%= micropost.created_at %></p>
+      <p>掲載日  <%= micropost.created_at.strftime("%Y-%m-%d %H:%M") %></p>
     </div>
   </div>
 </div>
