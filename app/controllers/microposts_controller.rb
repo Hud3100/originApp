@@ -2,7 +2,7 @@ class MicropostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @microposts = Micropost.all
+    @microposts = Micropost.all.order(created_at: :desc)
   end
 
   def new
@@ -28,7 +28,6 @@ class MicropostsController < ApplicationController
   private
 
   def micropost_params
-    params.require(:micropost).permit(:title, :content, :budget, :car_name,
-    images_attributes: [:img])
+    params.require(:micropost).permit(:title, :content, :budget, :car_name, images_attributes: [:img])
   end
 end

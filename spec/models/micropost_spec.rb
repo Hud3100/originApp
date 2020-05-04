@@ -1,7 +1,5 @@
 require 'rails_helper'
 require 'rspec/rails'
-
-
 # RSpec.describe Micropost, type: :model do
 #   let!(:user) { create(:user) }
 

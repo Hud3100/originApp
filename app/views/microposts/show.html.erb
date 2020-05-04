@@ -1,38 +1,52 @@
-<div class="content-container container col-md-8">
+<div class="content-container container col-md-8 col-sm-10">
   <div class="micropost-detail-title">
     <h3><%= @micropost.title %></h3>
   </div>
-  <div class="micropost-detail-content">
-    <%= @micropost.content %>
+  <div class="micropost-table-content col-md-8 col-sm-10 no-gutters">
+    <table class="table table-sm">
+      <tr>
+        <th scope="row">車名</th>
+        <td><%= @micropost.car_name %></td>
+      </tr>
+      <tr>
+        <th scope="row">予算</th>
+        <td><%= @micropost.budget %>万円</td>
+      </tr>
+      <tr>
+        <th scope="row">掲載日</td>
+        <td><%= @micropost.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+      </tr>
+    </table>
   </div>
-  <%= @micropost.car_name %>
-  <%= @micropost.budget %>
-  <div class="micropost-images-container">
-    <% if @micropost.images&.any? %>
-      <div id="example-2" class="carousel slide carousel-fade" data-ride="carousel" data-pause="hover">
-        <ol class="carousel-indicators">
-          <% @micropost.images.count.times do |count| %>
-            <li data-target="example-3" data-slide-to="<%= count %>" class=<%= "active" if count.zero? %>></li>
-          <% end %>
-        </ol>
-        <div class="carousel-inner">
-          <% @micropost.images.each_with_index do |image, i| %>
-            <div class="carousel-item <%= "active" if i.zero? %>">
-              <%= image_tag image.img.url, class: "d-block w-100",style: "320x480" %>
+  <div class="row">
+    <div class="micropost-images-container col-lg-5 col-sm-12">
+        <% if @micropost.images&.any? %>
+          <div id="example-2" class="carousel slide carousel-fade" data-ride="carousel" data-pause="hover">
+            <ol class="carousel-indicators">
+              <% @micropost.images.count.times do |count| %>
+                <li data-target="example-3" data-slide-to="<%= count %>" class=<%= "active" if count.zero? %>></li>
+              <% end %>
+            </ol>
+            <div class="carousel-inner">
+              <% @micropost.images.each_with_index do |image, i| %>
+                <div class="carousel-item <%= "active" if i.zero? %>">
+                  <%= image_tag image.img.url, class: "d-block w-100", size: "400x300" %>
+                </div>
+              <% end %>
+              <a class="carousel-control-prev" href="#example-2" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#example-2" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
-          <% end %>
-          <a class="carousel-control-prev" href="#example-2" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#example-2" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-    <% end %>
+          </div>
+        <% end %>
+    </div>
+    <div class="micropost-detail-content col-lg-7 col-sm-12">
+      <%= @micropost.content %>
+    </div>
   </div>
-
-  <p>掲載日  <%= @micropost.created_at.strftime("%Y-%m-%d %H:%M") %></p>
 </div>

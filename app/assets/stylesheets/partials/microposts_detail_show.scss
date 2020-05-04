@@ -1,4 +1,28 @@
-.carousel-item {
-  width: 300px;
-  height: 300px;
+.micropost-images-container {
+  display:inline-block;
+  padding: 0;
+}
+
+.micropost-detail-content {
+  display:inline-block;
+}
+
+.float {
+  display:inline-block;
+}
+
+.micropost-detail-content {
+  width: 50%;
+}
+
+.carousel {
+  width: 100%;
+}
+
+.info {
+  background-color: red($color: #000000);
+}
+
+.fack {
+  background-color: red;
 }
