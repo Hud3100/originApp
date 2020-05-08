@@ -2,10 +2,10 @@
 <div class="form-group-micropost ">
   <%= form_for @micropost do |f| %>
     <div class="form_information">
-      <%= f.label :title, :件名 %>
-      <%= f.text_field :title, class: "form-control"%>
-      <%= f.label :content, :内容 %>
-      <%= f.text_area :content, class: "form-control", rows: 10 %>
+      <%= f.label :title, "件名(必須)" %>
+      <%= f.text_field :title, id: "form-title", class: "form-control" %>
+      <%= f.label :content, "内容(必須)" %>
+      <%= f.text_area :content, id: "form-content", class: "form-control", rows: 10 %>
       <div class="form-group" >
         <div class = "col-xs-4">
           <%= f.label :budget, :予算 %></br>
@@ -39,3 +39,5 @@
       <% end %>
     </div>
 </div>
+
+<a href="/users/new">New User</a>
