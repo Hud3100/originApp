@@ -49,21 +49,31 @@
       <%= @micropost.content %>
     </div>
   </div>
-</div>
-
-
 <h2>コメント一覧</h2>
 <% @micropost.comments.each do |c| %>
   <div>
+    <p><%= c.company.email %>
     <p><%= c.content %></p>
   </div>
 <% end %>
+
+
 <% if company_signed_in? %>
-  <%= form_for([@micropost, @comment]) do |f| %>
-    <%= f.label :content %>
-    <%= f.text_field :content %>
-    <br>
-    <%= f.submit 'コメントする' %>
-  <% end %>
+  <h3>この車への提案はこちらから</h3>
+  <div class="form_comment">
+    <%= form_for([@micropost, @comment]) do |f| %>
+      <div class="form-group">
+        <%= f.label :title, "タイトル" %>
+        <%= f.text_field :title %>
+      </div>
+      <div class="form-group">
+        <%= f.label :content, "コメント内容" %>
+        <%= f.text_area :content , class: "form-control", rows: 10 %>
+      </div>
+      <br>
+      <%= f.submit 'コメントする' %>
+    <% end %>
+  </div>
 <% end %>
 <%= link_to "ホームへ戻る", root_path%>
+</div>
