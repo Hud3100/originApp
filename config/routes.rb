@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   }
   root 'home#index'
   resources :users, only: [:show]
+  resources :companies, only: [:show]
   resources :microposts do
     resources :comments, only: [:create]
   end

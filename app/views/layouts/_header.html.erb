@@ -35,7 +35,7 @@
       <% end %>
       <% if company_signed_in? %>
         <li class="nav-item">
-          <a class="nav-link" href=<%= new_company_registration_path %>>カスタマーショップマイページ</a>
+          <a class="nav-link" href=<%= company_path(id: current_company.id) %>>カスタマーショップマイページ</a>
         </li>
       <% else %>
         <li class="nav-item">

@@ -6,7 +6,7 @@
         <%= render "devise/shared/error_messages", resource: resource %>
         <div class="field form-group">
           <%= f.label :name, "店名" %>
-          <%= f.text_field, :name %>
+          <%= f.text_field :name, autocomplete: "name" %>
         </div>
         <div class="field form-group">
           <%= f.label :email, "メールアドレス" %><br />
