@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   get 'users/show'
   # ログイン、アカウント編集後、任意のページに遷移させるための記述
   # devise_for :users, controllers: {
-    #         registrations: 'users/registrations'
-    # }
-
+    #         registrations: 'users/registrations'}
+  root 'home#index'
   devise_for :companies, controllers: {
     sessions:      'companies/sessions',
     passwords:     'companies/passwords',
@@ -15,10 +14,10 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
-  root 'home#index'
   resources :users, only: [:show]
   resources :companies, only: [:show]
   resources :microposts do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
   end
 end
