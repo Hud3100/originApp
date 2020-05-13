@@ -1,6 +1,6 @@
 class Micropost < ApplicationRecord
   belongs_to :user
-  has_many :images
+  has_many :images, as: :imageable
   has_many :comments
   validates :user_id, presence: true
   validates :title, presence: true

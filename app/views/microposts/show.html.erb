@@ -50,18 +50,21 @@
     </div>
   </div>
 <h2>コメント一覧</h2>
-<% @micropost.comments.each do |c| %>
-  <div>
-    <p><%= c.company.name %>
-    <p><%= c.content %></p>
-  </div>
-<% end %>
-
+  <% @micropost.comments.each do |c| %>
+    <div>
+      <p><%= c.content %></p>
+      <% unless c.images.blank? %>
+          <% c.images.each do |image| %>
+            <img src = <%= image.img.url %>>
+          <% end %>
+      <% end %>
+    </div>
+  <% end %>
 
 <% if company_signed_in? %>
   <h3>この車への提案はこちらから</h3>
   <div class="form_comment">
-    <%= form_for([@micropost, @comment]) do |f| %>
+    <%= form_with(model: [@micropost, @comment], local: true) do |f| %>
       <div class="form-group">
         <%= f.label :title, "タイトル" %>
         <%= f.text_field :title %>
@@ -71,6 +74,9 @@
         <%= f.text_area :content , class: "form-control", rows: 10 %>
       </div>
       <br>
+        <%= f.fields_for :images do |i| %>
+          <%= i.file_field :img %>
+        <% end %>
       <%= f.submit 'コメントする' %>
     <% end %>
   </div>

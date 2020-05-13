@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_134350) do
+ActiveRecord::Schema.define(version: 2020_05_12_065700) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -41,6 +41,9 @@ ActiveRecord::Schema.define(version: 2020_05_11_134350) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "micropost_id"
+    t.string "imageable_type"
+    t.bigint "imageable_id"
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
     t.index ["micropost_id"], name: "index_images_on_micropost_id"
   end
 
