@@ -4,6 +4,9 @@ class CommentsController < ApplicationController
     @comment = micropost.comments.build(comment_params)
     @comment.company_id = current_company.id
     if @comment.save
+
+      micropost.create_notification_comment!(current_user, @comment.id)
+
       redirect_back(fallback_location: root_path)
     else
       flash[:warning] = '投稿に失敗しました'
