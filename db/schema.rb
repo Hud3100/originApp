@@ -10,17 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_171844) do
+ActiveRecord::Schema.define(version: 2020_05_14_171704) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
-    t.bigint "company_id"
-    t.bigint "micropost_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
-    t.index ["company_id"], name: "index_comments_on_company_id"
-    t.index ["micropost_id"], name: "index_comments_on_micropost_id"
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -70,18 +69,20 @@ ActiveRecord::Schema.define(version: 2020_05_13_171844) do
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "visitor_id", null: false
-    t.integer "visited_id", null: false
     t.integer "micropost_id"
     t.integer "comment_id"
     t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "visitorable_type"
+    t.bigint "visitorable_id"
+    t.string "visitedable_type"
+    t.bigint "visitedable_id"
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["micropost_id"], name: "index_notifications_on_micropost_id"
-    t.index ["visited_id"], name: "index_notifications_on_visited_id"
-    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
+    t.index ["visitedable_type", "visitedable_id"], name: "index_notifications_on_visitedable_type_and_visitedable_id"
+    t.index ["visitorable_type", "visitorable_id"], name: "index_notifications_on_visitorable_type_and_visitorable_id"
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -105,8 +106,6 @@ ActiveRecord::Schema.define(version: 2020_05_13_171844) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "comments", "companies"
-  add_foreign_key "comments", "microposts"
   add_foreign_key "favorites", "microposts"
   add_foreign_key "favorites", "users"
   add_foreign_key "images", "microposts"
