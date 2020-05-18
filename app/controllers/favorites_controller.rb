@@ -12,6 +12,7 @@ class FavoritesController < ApplicationController
   def destroy
     favorite = Favorite.find_by(micropost_id: params[:micropost_id], user_id: current_user.id)
     favorite.destroy
+    # Notificationを削除する必要あり
     redirect_to micropost_path(id: params[:micropost_id])
   end
 end

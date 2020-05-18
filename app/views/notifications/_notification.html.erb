@@ -1,32 +1,40 @@
-<% visitor = notification.visitor %>
-<% visited = notification.visited %>
+<% if notification.visitorable_type == "User" %>
+  <% visitor_user = notification.visitorable_user %>
+<% else %>
+  <% visitor_company = notification.visitorable_company %>
+<% end %>
+<% if notification.visitedable_type == "User" %>
+  <% visited_user = notification.visitedable_user %>
+<% else %>
+  <% visited_company = notification.visitedable_company %>
+<% end %>
 <div class="col-md-6 mx-auto">
   <div class="form-inline">
     <span>
-      <%= link_to user_path(visitor) do %>
-        <strong><%= visitor.name %></strong>
-        <%= 'さんが' %>
-      <% end %>
       <% case notification.action %>
-      <% when 'favorite' then %>
-        <%= link_to 'あなたの投稿', notification.micropost, style: "font"%>
-        <%= 'をお気に入りに登録しました'%>
-      <% when 'comment' then %>
-        <% if notification.micropost.user_id == visited.id %>
-          <%= link_to 'あなたの投稿', notification.micropost, style: "font-weight: bold;" %>
-        <% else %>
-          <span>
-            <%= link_to micropost_path(notification.micropost) do %>
-              <strong>
-                <%= notification.micropost.user.name + 'さんの投稿'%>
-              </strong>
-            <% end %>
-          <%= 'にコメントしました' %>
-          <p class="text-muted.mb-0">
-            <%= Comment.find_by(id: notification.comment_id)&.comment %>
-          </p>
-          </span>
-        <% end %>
+        <% when 'favorite' then %>
+          <strong><%= visitor_user.name %></strong>
+          <%= 'さんが' %>
+          <%= link_to 'あなたの投稿', notification.micropost, style: "font"%>
+          <%= 'をお気に入りに登録しました'%>
+        <% when 'comment' then %>
+          <% if notification.micropost.user_id == visited_user.id %>
+            <%= "#{visitor_company.name} 社が" if visitor_company.present? %>
+            <%= "#{visitor_user.name}さんが" if visitor_user.present? %>
+            <%= link_to 'あなたの投稿', notification.micropost, style: "font-weight: bold;" %>
+          <% else %>
+            <span>
+              <%= link_to micropost_path(notification.micropost) do %>
+                <strong>
+                  <%= notification.micropost.user.name + 'さんの投稿'%>
+                </strong>
+              <% end %>
+          <% end %>
+            <%= 'にコメントしました' %>
+            <p class="text-muted.mb-0">
+              <%= Comment.find_by(id: notification.comment_id)&.content %>
+            </p>
+            </span>
       <% end %>
     </span>
   </div>

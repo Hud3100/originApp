@@ -82,7 +82,6 @@
     </div>
   <% end %>
 
-<% if company_signed_in? %>
   <h3>この車への提案はこちらから</h3>
   <div class="form_comment">
     <%= form_with(model: [@micropost, @comment], local: true) do |f| %>
@@ -101,6 +100,6 @@
       <%= f.submit 'コメントする' %>
     <% end %>
   </div>
-<% end %>
+
 <%= link_to "ホームへ戻る", root_path%>
 </div>
