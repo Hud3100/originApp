@@ -1,7 +1,9 @@
 class MicropostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   def index
-    @microposts = Micropost.all.order(created_at: :desc)
+    # @microposts = Micropost.all.order(created_at: :desc)
+    @q = Micropost.ransack(params[:q])
+    @microposts = @q.result(distinct: true)
   end
 
   def new
