@@ -22,7 +22,7 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.create(micropost_params)
     if @micropost.save
       flash[:success] = '投稿されました'
-      redirect_to microposts_path
+      redirect_to @micropost
     else
       flash[:warning] = '投稿に失敗しました'
       redirect_to microposts_path
@@ -32,6 +32,6 @@ class MicropostsController < ApplicationController
   private
 
   def micropost_params
-    params.require(:micropost).permit(:title, :content, :budget, :car_name, images_attributes: [:img])
+    params.require(:micropost).permit(:title, :content, :budget, :car_name, images_attributes: [:img], category_ids: [])
   end
 end
