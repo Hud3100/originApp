@@ -14,9 +14,8 @@
       </div>
       <div class="form-group">
         <%= f.label :car_name, :車の名前 %>
-        <%= f.text_field :car_name, class: "form-control" %>
+        <%= f.text_field :car_name, id: 'form-search-car-name', class: "form-control" %>
       </div>
-
     <%= f.label :category, 'カテゴリ' %>
     <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %>
       <%= category.label do %>
@@ -24,7 +23,6 @@
         <%= category.text %>
       <% end %>
     <% end %>
-
 
     </div>
     <div class= "post__drop__box__container">
@@ -49,5 +47,3 @@
       <% end %>
     </div>
 </div>
-
-<a href="/users/new">New User</a>

@@ -6,8 +6,6 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/suggest', to: "suggests#suggest"
   post '/suggest', to: "suggests#suggest"
-  get 'practice/index'
-  post 'practice/index'
 
   devise_for :companies, controllers: {
     sessions:      'companies/sessions',

@@ -1,7 +1,9 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 @import "partials/*";
-
+@import "jquery-ui/autocomplete";
+@import "jquery-ui/theme";
+@import "jquery-ui/menu";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
