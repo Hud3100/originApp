@@ -8,6 +8,5 @@ RSpec.feature 'User', type: :feature do
     visit user_path(id: @user.id)
     expect(page).to have_content(@user.name)
     expect(page).to have_content(@user.email)
-    expect(page).to have_content(@user.content)
   end
 end
