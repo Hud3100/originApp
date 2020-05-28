@@ -8,6 +8,7 @@ class Micropost < ApplicationRecord
   has_many :categories, through: :micropost_category_relations
   validates :user_id, presence: true
   validates :title, :content, presence: true
+  validates :content, uniqueness: true
   accepts_nested_attributes_for :images
 
   def favorited_by?(user)

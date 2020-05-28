@@ -12,21 +12,21 @@ RSpec.feature 'micropost' do
     fill_in 'form-title', with: ""
     fill_in 'form-content', with: ""
     click_on '投稿する'
-    expect(page).to have_content "投稿に失敗しました"
+    expect(page).to have_content "タイトルを入力してください 内容を入力してください"
   end
 
   scenario '内容が入力されなければエラーメッセージを表示する' do
     fill_in 'form-title', with: "投稿のタイトル"
     fill_in 'form-content', with: ""
     click_on '投稿する'
-    expect(page).to have_content "投稿に失敗しました"
+    expect(page).to have_content "内容を入力してください"
   end
 
   scenario 'タイトルが入力されなければエラーメッセージを表示する' do
     fill_in 'form-title', with: ""
     fill_in 'form-content', with: "投稿の内容"
     click_on '投稿する'
-    expect(page).to have_content "投稿に失敗しました"
+    expect(page).to have_content "タイトルを入力してください"
   end
 
   scenario 'タイトルと内容を入力し、投稿する' do
