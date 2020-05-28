@@ -1,10 +1,17 @@
 FactoryBot.define do
-  pass = Faker::Internet.password(8)
+  password = Faker::Internet.password(min_length: 8)
 
-  factory :user do
+  factory :user, class: User do
     sequence(:name) { Faker::Name.name }
     sequence(:email) { Faker::Internet.email }
-    sequence(:password) { pass }
-    sequence(:password_confirmation) { pass }
+    sequence(:password) { password }
+    sequence(:password_confirmation) { password }
+  end
+
+  factory :another_user, class: User do
+    sequence(:name) { Faker::Name.name }
+    sequence(:email) { Faker::Internet.email }
+    sequence(:password) { password }
+    sequence(:password_confirmation) { password }
   end
 end

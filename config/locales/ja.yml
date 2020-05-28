@@ -43,7 +43,7 @@
         long: "%Y年%m月%d日(%a)"
         short: "%m/%d"
       month_names:
-      - 
+      -
       - 1月
       - 2月
       - 3月
@@ -205,6 +205,13 @@
         long: "%Y/%m/%d %H:%M"
         short: "%m/%d %H:%M"
       pm: 午後
-attributes:
-  user:
-    name: 名前
+      models:
+        user: ユーザー
+        micropost: 投稿
+      attibutes:
+        user:
+          name: 名前
+        micropost:
+          title: 題名
+        user/microposts:
+          title: 題名

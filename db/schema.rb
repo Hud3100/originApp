@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_104501) do
+ActiveRecord::Schema.define(version: 2020_05_27_093419) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -98,14 +98,6 @@ ActiveRecord::Schema.define(version: 2020_05_20_104501) do
     t.index ["micropost_id"], name: "index_notifications_on_micropost_id"
     t.index ["visitedable_type", "visitedable_id"], name: "index_notifications_on_visitedable_type_and_visitedable_id"
     t.index ["visitorable_type", "visitorable_id"], name: "index_notifications_on_visitorable_type_and_visitorable_id"
-  end
-
-  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "title"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

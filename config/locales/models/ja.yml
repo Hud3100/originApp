@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      micropost: 投稿
+    attributes:
+      user:
+        name: 氏名
+        email: メールアドレス
+        created_at: 作成日時
+        updated_at: 更新日時
+      micropost:
+        title: タイトル
+        content: 内容
+        created_at: 投稿日時
+        updated_at: 更新日時
+        budget: 予算
+        car_name: 車名
+
