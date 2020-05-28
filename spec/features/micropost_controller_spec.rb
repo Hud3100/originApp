@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.feature 'micropost' do
   let(:user) { create(:user) }
   before do
-    user = User.create!(:email => 'test@example.com', :password => 'f4k3p455w0rd')
     login_as(user, :scope => :user)
     visit new_micropost_path
   end
@@ -34,7 +33,6 @@ RSpec.feature 'micropost' do
     fill_in 'form-title', with: "質問のタイトル"
     fill_in 'form-content', with: "質問の内容"
     click_on ('投稿する')
-    #投稿に成功したことを検証する
     expect(page).to have_content "投稿されました"
   end
 end
