@@ -2,6 +2,8 @@ require 'rails_helper'
 RSpec.describe Micropost, type: :model do
   let(:user) { create(:user) }
   let(:another_user) { create(:another_user) }
+  let(:image_path) { File.join(Rails.root, 'spec/fixtures/test.jpg') }
+  let(:image) { Rack::Test::UploadedFile.new(image_path) }
   context "バリデーション: " do
     it "投稿の題名、本文、外部キー(user_id)があれば有効" do
       micropost = user.microposts.create(
@@ -37,6 +39,17 @@ RSpec.describe Micropost, type: :model do
       )
       expect(micropost).not_to be_valid
       expect(micropost.errors[:user_id]).to include("を入力してください")
+    end
+
+    it "画像と同時に投稿可能" do
+      micropost = user.microposts.create(
+        title: "サンプルタイトル",
+        content: "サンプルコンテンツ"
+      )
+      micropost.images.create(
+        img: image
+      )
+      expect(micropost).to be_valid
     end
 
     it "同一のユーザーは過去投稿の内容を有する投稿を作成できない" do
