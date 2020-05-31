@@ -1,6 +1,6 @@
 class Micropost < ApplicationRecord
   belongs_to :user
-  has_many :images, as: :imageable
+  has_many :images, as: :imageable, dependent: :destroy
   has_many :comments
   has_many :favorites
   has_many :notifications, dependent: :destroy

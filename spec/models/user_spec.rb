@@ -69,15 +69,6 @@ RSpec.describe User, type: :model do
       expect(another_user).not_to be_valid
       expect(another_user.errors[:email]).to include("はすでに存在します")
     end
-
-    it "ユーザーは削除できる" do
-      user = User.create(
-        name: "sample",
-        email: "sample@sample.com",
-        password: "password"
-      )
-      expect { user.destroy }.to change{ User.count }.by(-1)
-    end
   end
 
   context "アソシエーション:" do
@@ -108,6 +99,17 @@ RSpec.describe User, type: :model do
       )
       expect(comment).to be_valid
       expect { user.destroy }.to change{ Comment.count }.by(-1)
+    end
+  end
+
+  context "削除:" do
+    it "ユーザーは削除できる" do
+      user = User.create(
+        name: "sample",
+        email: "sample@sample.com",
+        password: "password"
+      )
+      expect { user.destroy }.to change{ User.count }.by(-1)
     end
   end
 end

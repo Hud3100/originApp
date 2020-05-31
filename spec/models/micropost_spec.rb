@@ -75,10 +75,30 @@ RSpec.describe Micropost, type: :model do
       expect(t.class_name).to eq "User"
     end
 
+    it "投稿を削除してもUserは削除されない" do
+      micropost = user.microposts.create(
+                    title: "Sample",
+                    content: "Sample Post"
+                    )
+      expect { micropost.destroy }.to change{ Micropost.count }.by(-1)
+      expect { micropost.destroy }.not_to change{ User.count }
+    end
+
     it "Imageモデルをもつ" do
       t = Micropost.reflect_on_association(:images)
       expect(t.macro).to eq(:has_many)
       expect(t.class_name).to eq "Image"
+    end
+
+    it "投稿を削除すると、関連する画像が削除される" do
+      micropost = user.microposts.create(
+        title: "Sample",
+        content: "Sample Post"
+      )
+      micropost.images.create(
+        img: image
+      )
+      expect { micropost.destroy }.to change{ Image.count }.by(-1)
     end
 
     it "Commentモデルをもつ" do
@@ -86,9 +106,17 @@ RSpec.describe Micropost, type: :model do
       expect(t.macro).to eq(:has_many)
     end
 
+    it "投稿を削除すると関連するコメントが削除される" do
+      skip
+    end
+
     it "Favoritesモデルに属する" do
       t = Micropost.reflect_on_association(:favorites)
       expect(t.macro).to eq(:has_many)
+    end
+
+    it "投稿を削除すると関連するお気に入りが削除される" do
+      skip
     end
 
     it "notificationモデルをもつ" do
@@ -96,14 +124,41 @@ RSpec.describe Micropost, type: :model do
       expect(t.macro).to eq(:has_many)
     end
 
+    it "投稿を削除すると関連する通知が削除される" do
+      skip
+    end
+
     it "MicropostCategoryRelationをもつ" do
       t = Micropost.reflect_on_association(:micropost_category_relations)
       expect(t.macro).to eq(:has_many)
     end
 
+    it "投稿を削除すると属していたカテゴリの関連付が削除される" do
+      skip
+    end
+
     it "Categoryモデルをもつ" do
       t = Micropost.reflect_on_association(:categories)
       expect(t.macro).to eq(:has_many)
+    end
+
+    it "投稿を削除しても、カテゴリは削除されない" do
+      skip
+    end
+
+  end
+
+  context "クラスメソッド: " do
+    skip
+  end
+
+  context "削除:" do
+    it "投稿は削除可能" do
+      micropost = user.microposts.create(
+        title: "Sample",
+        content: "Sample Post"
+        )
+      expect { micropost.destroy }.to change{ Micropost.count }.by(-1)
     end
   end
 end
