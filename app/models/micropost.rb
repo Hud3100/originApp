@@ -3,7 +3,7 @@ class Micropost < ApplicationRecord
   has_many :images, as: :imageable
   has_many :comments
   has_many :favorites
-  has_many :notifications, as: :notificationable, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   has_many :micropost_category_relations
   has_many :categories, through: :micropost_category_relations
   validates :user_id, presence: true

@@ -11,9 +11,13 @@ ja:
         updated_at: 更新日時
       micropost:
         title: タイトル
-        content: 内容
+        content: 質問内容
         created_at: 投稿日時
         updated_at: 更新日時
         budget: 予算
         car_name: 車名
-
+      comment:
+        title: タイトル
+        content: コメント内容
+        created_at: 投稿日時
+        updated_at: 更新日時

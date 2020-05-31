@@ -80,5 +80,30 @@ RSpec.describe Micropost, type: :model do
       expect(t.macro).to eq(:has_many)
       expect(t.class_name).to eq "Image"
     end
+
+    it "Commentモデルをもつ" do
+      t = Micropost.reflect_on_association(:comments)
+      expect(t.macro).to eq(:has_many)
+    end
+
+    it "Favoritesモデルに属する" do
+      t = Micropost.reflect_on_association(:favorites)
+      expect(t.macro).to eq(:has_many)
+    end
+
+    it "notificationモデルをもつ" do
+      t = Micropost.reflect_on_association(:notifications)
+      expect(t.macro).to eq(:has_many)
+    end
+
+    it "MicropostCategoryRelationをもつ" do
+      t = Micropost.reflect_on_association(:micropost_category_relations)
+      expect(t.macro).to eq(:has_many)
+    end
+
+    it "Categoryモデルをもつ" do
+      t = Micropost.reflect_on_association(:categories)
+      expect(t.macro).to eq(:has_many)
+    end
   end
 end
