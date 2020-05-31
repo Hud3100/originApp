@@ -4,7 +4,8 @@ RSpec.describe Micropost, type: :model do
   let(:another_user) { create(:another_user) }
   let(:image_path) { File.join(Rails.root, 'spec/fixtures/test.jpg') }
   let(:image) { Rack::Test::UploadedFile.new(image_path) }
-  context "バリデーション: " do
+
+  context "バリデーション:" do
     it "投稿の題名、本文、外部キー(user_id)があれば有効" do
       micropost = user.microposts.create(
         title: "サンプルタイトル",
@@ -41,17 +42,6 @@ RSpec.describe Micropost, type: :model do
       expect(micropost.errors[:user_id]).to include("を入力してください")
     end
 
-    it "画像と同時に投稿可能" do
-      micropost = user.microposts.create(
-        title: "サンプルタイトル",
-        content: "サンプルコンテンツ"
-      )
-      micropost.images.create(
-        img: image
-      )
-      expect(micropost).to be_valid
-    end
-
     it "同一のユーザーは過去投稿の内容を有する投稿を作成できない" do
       user.microposts.create(
         title: "サンプルタイトル",
@@ -75,6 +65,20 @@ RSpec.describe Micropost, type: :model do
         content: "サンプルコンテンツ"
       )
       expect(micropost).not_to be_valid
+    end
+  end
+
+  context "アソシエーション:" do
+    it "Userモデルに属する" do
+      t = Micropost.reflect_on_association(:user)
+      expect(t.macro).to eq(:belongs_to)
+      expect(t.class_name).to eq "User"
+    end
+
+    it "Imageモデルをもつ" do
+      t = Micropost.reflect_on_association(:images)
+      expect(t.macro).to eq(:has_many)
+      expect(t.class_name).to eq "Image"
     end
   end
 end
