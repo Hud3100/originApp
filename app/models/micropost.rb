@@ -1,10 +1,10 @@
 class Micropost < ApplicationRecord
   belongs_to :user
   has_many :images, as: :imageable, dependent: :destroy
-  has_many :comments
-  has_many :favorites
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  has_many :micropost_category_relations
+  has_many :micropost_category_relations, dependent: :destroy
   has_many :categories, through: :micropost_category_relations
   validates :user_id, presence: true
   validates :title, :content, presence: true

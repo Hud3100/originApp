@@ -4,7 +4,7 @@ RSpec.describe Micropost, type: :model do
   let(:another_user) { create(:another_user) }
   let(:image_path) { File.join(Rails.root, 'spec/fixtures/test.jpg') }
   let(:image) { Rack::Test::UploadedFile.new(image_path) }
-
+  let(:category) { create(:category) }
   context "バリデーション:" do
     it "投稿の題名、本文、外部キー(user_id)があれば有効" do
       micropost = user.microposts.create(
@@ -107,7 +107,16 @@ RSpec.describe Micropost, type: :model do
     end
 
     it "投稿を削除すると関連するコメントが削除される" do
-      skip
+      micropost = user.microposts.create(
+        title: "Sample",
+        content: "Sample Post"
+      )
+      comment = micropost.comments.create(
+                title: "sample comment",
+                content: "sample comment content",
+                commentable_type: user.class,
+                commentable_id: user.id)
+      expect { micropost.destroy }.to change{ Comment.count }.by(-1)
     end
 
     it "Favoritesモデルに属する" do
@@ -116,7 +125,14 @@ RSpec.describe Micropost, type: :model do
     end
 
     it "投稿を削除すると関連するお気に入りが削除される" do
-      skip
+      micropost = user.microposts.create(
+        title: "Sample",
+        content: "Sample Post"
+      )
+      favorite = another_user.favorites.create(
+        micropost_id: micropost.id
+      )
+      expect { micropost.destroy }.to change{ Favorite.count }.by(-1)
     end
 
     it "notificationモデルをもつ" do
@@ -125,7 +141,12 @@ RSpec.describe Micropost, type: :model do
     end
 
     it "投稿を削除すると関連する通知が削除される" do
-      skip
+      micropost = user.microposts.create(
+        title: "Sample",
+        content: "Sample Post"
+        )
+      notice = micropost.create_notification_favorite!(another_user)
+      expect { micropost.destroy }.to change{ Notification.count }.by(-1)
     end
 
     it "MicropostCategoryRelationをもつ" do
@@ -134,7 +155,12 @@ RSpec.describe Micropost, type: :model do
     end
 
     it "投稿を削除すると属していたカテゴリの関連付が削除される" do
-      skip
+      micropost = user.microposts.create(
+        title: "Sample",
+        content: "Sample Post",
+        category_ids: category.id
+      )
+      expect { micropost.destroy }.to change{ MicropostCategoryRelation.count }.by(-1)
     end
 
     it "Categoryモデルをもつ" do
@@ -143,13 +169,14 @@ RSpec.describe Micropost, type: :model do
     end
 
     it "投稿を削除しても、カテゴリは削除されない" do
-      skip
+      micropost = user.microposts.create(
+        title: "Sample",
+        content: "Sample Post",
+        category_ids: category.id
+      )
+      expect { micropost.destroy }.not_to change{ Category.count }
     end
 
-  end
-
-  context "クラスメソッド: " do
-    skip
   end
 
   context "削除:" do
