@@ -25,7 +25,7 @@ class Micropost < ApplicationRecord
   end
 
   def save_notification_comment_for_user!(current_user, comment_id, temp_id)
-    notification = current_company.active_notifications.new(
+    notification = current_user.active_notifications.new(
       micropost_id: id,
       comment_id: comment_id,
       visitedable_id: temp_id,

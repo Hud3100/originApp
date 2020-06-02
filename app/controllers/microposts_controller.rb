@@ -15,7 +15,7 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.find(params[:id])
     @comments = @micropost.comments
     @comment = @micropost.comments.new
-    @image = @comment.images.new
+    @image = @comment.images.build
   end
 
   def create
