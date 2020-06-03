@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  validates :title, :content, presence: true
+  validates :title, :content, :micropost_id, presence: true
   belongs_to :commentable, polymorphic: true
   belongs_to :micropost, optional: true
   has_many :notifications, dependent: :destroy
