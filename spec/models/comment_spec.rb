@@ -102,6 +102,26 @@ RSpec.describe Comment, type: :model do
       )
       expect(comment).to be_valid
     end
+
+    it "画像を添付してコメントを投稿できる" do
+      comment = user.comments.create(
+        title: "Sample Comment",
+        content: "Sample Comment Content",
+        micropost_id: micropost.id,
+        images_attributes: [img: image]
+      )
+      expect(comment).to be_valid
+    end
+
+    it "コメントを削除すると添付された画像も削除される" do
+      comment = user.comments.create(
+        title: "Sample Comment",
+        content: "Sample Comment Content",
+        micropost_id: micropost.id,
+        images_attributes: [img: image]
+      )
+      expect { comment.destroy }.to change{ Image.count}.by(-1)
+    end
   end
 
   context "削除:" do
