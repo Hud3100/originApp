@@ -120,7 +120,7 @@ RSpec.describe Comment, type: :model do
         micropost_id: micropost.id,
         images_attributes: [img: image]
       )
-      expect { comment.destroy }.to change{ Image.count}.by(-1)
+      expect { comment.destroy }.to change{ Image.count }.by(-1)
     end
   end
 
