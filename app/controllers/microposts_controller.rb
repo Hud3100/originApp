@@ -32,6 +32,6 @@ class MicropostsController < ApplicationController
   private
 
   def micropost_params
-    params.require(:micropost).permit(:title, :content, :budget, :car_name, images_attributes: [:img], category_ids: [])
+    params.require(:micropost).permit(:title, :content, :budget, :car_name, images_attributes: [:id, :img, :_destroy], category_ids: [])
   end
 end
