@@ -9,7 +9,7 @@ class Micropost < ApplicationRecord
   validates :user_id, presence: true
   validates :title, :content, presence: true
   validates :content, uniqueness: true
-  accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :images, allow_destroy: true
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

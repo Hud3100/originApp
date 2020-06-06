@@ -90,6 +90,15 @@ RSpec.describe Micropost, type: :model do
       expect(t.class_name).to eq "Image"
     end
 
+    it "画像を添付して投稿できる" do
+      micropost = user.microposts.create(
+        title: "Sample Post",
+        content: "Sample post content",
+        images_attributes: [img: image]
+      )
+      expect(micropost).to be_valid
+    end
+
     it "投稿を削除すると、関連する画像が削除される" do
       micropost = user.microposts.create(
         title: "Sample",

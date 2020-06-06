@@ -1,17 +1,27 @@
 require 'rails_helper'
-
 RSpec.describe Image, type: :model do
   let(:image_path) { File.join(Rails.root, 'spec/fixtures/test.jpg') }
   let(:image) { Rack::Test::UploadedFile.new(image_path) }
   let(:user) { create(:user) }
   let(:micropost) { create(:micropost) }
-  let(:comment) { create(:comment) }
   context "バリデーション:" do
-    it "関連付けなしで、Imageモデルのみの生成は不可" do
+    it "imageモデルのみの生成は不可" do
       image = Image.create(
         img: image
       )
       expect(image).not_to be_valid
+    end
+
+    it "投稿あるいはコメントに結びついて始めて生成される" do
+      expect { create(:micropost, images_attributes: [img: image]) }.to change{ Image.count }.by(1)
+    end
+
+    it "画像が添付されなかったとき、Imageモデルは生成されない" do
+      expect { create(:micropost) }.not_to change{ Image.count }
+    end
+
+    it "無効なファイルを渡された場合とき、Imageモデルは生成されない" do
+      skip
     end
   end
 
@@ -20,6 +30,27 @@ RSpec.describe Image, type: :model do
       t = Image.reflect_on_association(:imageable)
       expect(t.macro).to eq(:belongs_to)
       expect(t.class_name).to eq "Imageable"
+    end
+
+    it "画像を削除しても投稿は削除されない" do
+      micropost = user.microposts.create(
+        title: "Sample Post",
+        content: "Sample post content",
+        images_attributes: [img: image]
+      )
+      expect { micropost.images.destroy }.to change{ Image.count }.by(-1)
+      expect { micropost.images.destroy }.not_to change{ Micropost.count }
+    end
+
+    it "画像を削除してもコメントは削除されない" do
+      skip
+      # comment = user.comments.create(
+      #   title: "Sample Comment",
+      #   content: "Sample comment content",
+      #   images_attributes: [img: image]
+      # )
+      # expect { comment.images.destroy }.to change{ Image.count }.by(-1)
+      # expect { comment.images.destroy }.not_to change{ Micropost.count }
     end
   end
 end
