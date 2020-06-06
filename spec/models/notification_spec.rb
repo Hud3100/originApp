@@ -10,14 +10,15 @@ RSpec.describe Notification, type: :model do
     end
   end
 
-  context "コメントの通知:" do
+  context "クラスメソッドのテスト:" do
     it "ユーザーが投稿にコメントしたときNotificationモデルが生成される" do
       comment = user.comments.create(micropost_id: micropost.id)
       expect { micropost.create_notification_comment_for_user!(user, comment.id, "user") }.to change{ Notification.count }.by(1)
     end
 
     it "カンパニーが投稿にコメントしたときNotificationモデルが生成される" do
-      skip
+      comment = company.comments.create(micropost_id: micropost.id)
+      expect { micropost.create_notification_comment!(company, comment.id, "company") }.to change{ Notification.count }.by(1)
     end
   end
 end
