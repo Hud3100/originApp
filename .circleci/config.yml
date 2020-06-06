@@ -33,6 +33,10 @@ jobs:
         - ./vendor/bundle
         key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
+    - run:
+      name: Wait for DB
+      command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+
     # Database setup
     - run: mv ./config/database.yml.ci ./config/database.yml
 
@@ -51,11 +55,11 @@ jobs:
           TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
             circleci tests split --split-by=timings)"
 
-          bundle exec rspec \
-            --out /tmp/test-results/rspec.xml \
-            --format progress \
-            --format progress \
-            $TEST_FILES
+            bundle exec rspec --format progress \
+                            --format RspecJunitFormatter \
+                            --out /tmp/test-results/rspec.xml \
+                            --format progress \
+                            $TEST_FILES
 
     # collect reports
     - store_test_results:
