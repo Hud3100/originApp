@@ -3,9 +3,9 @@ RSpec.describe Category, type: :model do
   let(:user) { create(:user) }
   let(:category) { create(:category) }
   context "バリデーション:" do
-    it "カテゴリーの数は4つである" do
-      expect(Category.count).to eq(Constants::CATEGORY_COUNT)
-    end
+    # it "カテゴリーの数は4つである" do
+    #   expect(Category.count).to eq(Constants::CATEGORY_COUNT)
+    # end
 
     it "名前のないカテゴリーは無効" do
       category = Category.create(
