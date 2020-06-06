@@ -33,24 +33,11 @@ RSpec.describe Image, type: :model do
     end
 
     it "画像を削除しても投稿は削除されない" do
-      micropost = user.microposts.create(
-        title: "Sample Post",
-        content: "Sample post content",
-        images_attributes: [img: image]
-      )
-      expect { micropost.images.destroy }.to change{ Image.count }.by(-1)
-      expect { micropost.images.destroy }.not_to change{ Micropost.count }
+      skip
     end
 
     it "画像を削除してもコメントは削除されない" do
       skip
-      # comment = user.comments.create(
-      #   title: "Sample Comment",
-      #   content: "Sample comment content",
-      #   images_attributes: [img: image]
-      # )
-      # expect { comment.images.destroy }.to change{ Image.count }.by(-1)
-      # expect { comment.images.destroy }.not_to change{ Micropost.count }
     end
   end
 end
