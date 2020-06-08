@@ -21,6 +21,15 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
+    it "パスワードが6文字未満であれば、ユーザーは無効" do
+      user = User.create(
+        name: "Test User",
+        email: "test@test.com",
+        password: "12345"
+      )
+      expect(user).not_to be_valid
+    end
+
     it "氏名がなければユーザーは無効" do
       user = User.create(
         name: nil,
