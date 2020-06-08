@@ -27,7 +27,7 @@ RSpec.feature 'カンパニーのログインとログアウト' do
     fill_in 'Email', with: 'samplecompany@company.com'
     fill_in 'company_password', with: "wrongpassword"
     find('.btn-login').click
-    expect(page).to have_content 'Emailまたはパスワードが違い'
+    expect(page).to have_content 'Emailまたはパスワードが違います。'
   end
 
   scenario 'ログアウト' do
