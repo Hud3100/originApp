@@ -4,8 +4,8 @@ RSpec.feature 'ログインとログアウト' do
   let(:user) { create(:user) }
   background do
     User.create!(name: "Sample User", email: 'sample@sample.com', password: 'samplepass')
-    login_as user
   end
+
   scenario 'ログインする' do
     visit new_user_session_path
     fill_in 'email', with: 'sample@sample.com'
