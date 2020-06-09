@@ -7,8 +7,14 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+      company:
+        name: "ショップ名"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
     models:
       user: "ユーザ"
+      company: "カスタマーショップ"
   devise:
     confirmations:
       new:

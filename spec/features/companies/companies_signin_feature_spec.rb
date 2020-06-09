@@ -8,7 +8,7 @@ RSpec.feature 'カンパニーのログインとログアウト' do
 
   scenario 'ログインする' do
     visit new_company_session_path
-    fill_in 'Email', with: 'samplecompany@company.com'
+    fill_in 'メールアドレス', with: 'samplecompany@company.com'
     fill_in 'company_password', with: "samplepassword"
     find('.btn-login').click
     expect(page).to have_content 'ログインしました'
@@ -16,18 +16,18 @@ RSpec.feature 'カンパニーのログインとログアウト' do
 
   scenario 'メールアドレスを間違えるとエラーが表示される' do
     visit new_company_session_path
-    fill_in 'Email', with: 'anothercompany@company.com'
+    fill_in 'メールアドレス', with: 'anothercompany@company.com'
     fill_in 'company_password', with: "samplepassword"
     find('.btn-login').click
-    expect(page).to have_content 'Emailまたはパスワードが違います。'
+    expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
   end
 
   scenario 'パスワードを間違えるとエラーが表示される' do
     visit new_company_session_path
-    fill_in 'Email', with: 'samplecompany@company.com'
+    fill_in 'メールアドレス', with: 'samplecompany@company.com'
     fill_in 'company_password', with: "wrongpassword"
     find('.btn-login').click
-    expect(page).to have_content 'Emailまたはパスワードが違います。'
+    expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
   end
 
   scenario 'ログアウト' do
