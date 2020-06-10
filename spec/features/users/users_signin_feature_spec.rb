@@ -31,6 +31,9 @@ RSpec.feature 'ログインとログアウト' do
   end
 
   scenario 'ログアウト' do
-    skip
+    login(user)
+    visit root_path
+    click_link 'ログアウト'
+    expect(page).to have_content 'ログアウトしました。'
   end
 end
