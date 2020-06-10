@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'カンパニーのログインとログアウト' do
-  let(:user) { create(:user) }
+  let(:testcompany) { create(:company, email: "testcompany@company.com") }
   background do
     Company.create!(name: "Sample Company", email: "samplecompany@company.com", password: "samplepassword")
   end
@@ -31,6 +31,9 @@ RSpec.feature 'カンパニーのログインとログアウト' do
   end
 
   scenario 'ログアウト' do
-    skip
+    login_as_company(testcompany)
+    visit company_path(testcompany)
+    click_link 'ログアウト'
+    expect(page).to have_content 'ログアウトしました。'
   end
 end

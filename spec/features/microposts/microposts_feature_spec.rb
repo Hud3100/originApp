@@ -70,7 +70,7 @@ RSpec.feature '質問の投稿とコメント機能' do
         visit micropost_path(testpost)
         fill_in 'タイトル', with: "このカスタムいいなあ"
         fill_in 'コメント内容', with: "なるほどねーそういうやり方があったのか"
-        attach_file "comment[images_attributes][0][img]", "spec/fixtures/test.jpg"
+        # attach_file "comment[images_attributes][0][img]", "spec/fixtures/test.jpg"
         click_on 'コメントする'
         expect(page).to have_content "コメントが投稿されました。"
       end
