@@ -12,6 +12,9 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
+      comment:
+        title: "タイトル"
+        content: "コメント内容"
     models:
       user: "ユーザ"
       company: "カスタマーショップ"

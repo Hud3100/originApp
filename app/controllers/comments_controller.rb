@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
         @comment.commentable_id = current_company.id
         micropost.create_notification_comment!(current_company, @comment.id, "company")
       end
+      flash[:success] = 'コメントが投稿されました。'
       redirect_back(fallback_location: root_path)
     else
       flash[:warning] = '投稿に失敗しました'
