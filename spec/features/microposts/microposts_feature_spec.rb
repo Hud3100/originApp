@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature '質問の投稿とコメント機能' do
-  given(:testuser) { create:user,
+  given(:testuser) { create :user,
                    name: "Test User",
-                   email: "testuser@user.com",
-                  password: "sampleuser",
-                  password_confirmation: "sampleuser"}
+                   email: "testuser@user.com"}
   given(:anotheruser) { create :user }
   given(:company) { create :company }
+  given(:testpost) { create :micropost, user_id: testuser.id}
   background do
     # User.create(name: "Sample User", email: "samplecompany@company.com", password: "samplepassword")
     # Company.create!(name: "Sample Company", email: "samplecompany@company.com", password: "samplepassword")

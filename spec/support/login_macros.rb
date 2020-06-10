@@ -2,7 +2,7 @@ module LoginMacros
   def login(user)
     visit new_user_session_path
     fill_in 'email', with: user.email
-    fill_in 'user_password', with: "sampleuser"
+    fill_in 'user_password', with: "password"
     find('.btn-login').click
     expect(page).to have_content 'ログインしました。'
   end
@@ -14,10 +14,10 @@ module LoginMacros
 
   def login_as_company(company)
     visit new_company_session_path
-    fill_in 'email', with: company.email
-    fill_in 'company_password', with: "samplecompany"
+    fill_in 'メールアドレス', with: company.email
+    fill_in 'パスワード', with: "password"
     find('.btn-login').click
-    expect(page).to have_content
+    expect(page).to have_content 'ログインしました'
   end
 
   def logout_as_company
