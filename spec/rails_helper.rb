@@ -5,6 +5,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -14,7 +15,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
-  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f } #support directoryをrequire
+  # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f } #support directoryをrequire
   config.include RequestSpecHelper, type: :request #type: :requestのときにRequestHelperをinclude
 
   config.include Warden::Test::Helpers
@@ -27,4 +28,5 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
   config.include ControllerMacros, type: :controller
+  config.include LoginMacros
 end
