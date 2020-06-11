@@ -77,21 +77,34 @@ RSpec.feature '質問の投稿とコメント機能' do
     end
 
     scenario 'コメントにタイトルが入力されていなければエラーメッセージを表示する' do
-
+      act_as(anotheruser) do
+        visit micropost_path(testpost)
+        fill_in 'タイトル', with: ""
+        fill_in 'コメント内容', with: "なるほどねーそういうやり方があったのか"
+        # attach_file "comment[images_attributes][0][img]", "spec/fixtures/test.jpg"
+        click_on 'コメントする'
+        expect(page).to have_content "タイトルを入力してください"
+      end
     end
 
     scenario 'コメントに内容が入力されていなければエラーメッセージを表示する' do
-      skip
+      act_as(anotheruser) do
+        visit micropost_path(testpost)
+        fill_in 'タイトル', with: "そのカスタムいいなあ！"
+        fill_in 'コメント内容', with: ""
+        # attach_file "comment[images_attributes][0][img]", "spec/fixtures/test.jpg"
+        click_on 'コメントする'
+        expect(page).to have_content "コメント内容を入力してください"
+      end
     end
   end
 
   context 'お気に入り' do
-    scenario '質問に他ユーザーがお気に入り登録する' do
-      skip
-    end
-
-    scenario '質問をユーザーがお気に入りから解除する' do
-      skip
+    scenario '質問に他ユーザーがお気に入り登録するとお気に入り解除ボタンへ切り替わり、お気に入り解除ボタンをクリック' do
+      login anotheruser
+      visit micropost_path(testpost)
+      click_on 'お気に入りに登録'
+      expect(page).to have_content "お気に入り解除"
     end
   end
 end

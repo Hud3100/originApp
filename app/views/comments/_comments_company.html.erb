@@ -1,8 +1,9 @@
 <h3>この車への提案はこちらから</h3>
 <div class="form_comment">
   <%= form_with(model: [@micropost, @comment], local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
     <div class="form-group">
-      <%= f.label :title %>
+      <%= f.label :title, "タイトル" %>
       <%= f.text_field :title %>
     </div>
     <div class="form-group">
