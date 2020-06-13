@@ -26,15 +26,15 @@ module LoginMacros
     expect(page).to have_content 'ログインしました'
   end
 
-  def logout_as_company
-    visit company_path(testcompany)
+  def logout_as_company(company)
+    visit company_path(company)
     click_link 'ログアウト'
     expect(page).to have_content 'ログアウトしました。'
   end
 
-  def act_as(company)
-    login company
+  def act_as_company(company)
+    login_as_company company
     yield
-    logout
+    logout_as_company company
   end
 end
