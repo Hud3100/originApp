@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/show'
   # ログイン、アカウント編集後、任意のページに遷移させるための記述
   # devise_for :users, controllers: {
     #         registrations: 'users/registrations'}
