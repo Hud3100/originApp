@@ -7,8 +7,8 @@ RSpec.feature '通知機能' do
   given(:company) { create :company }
   given(:testpost) { create :micropost, user_id: testuser.id}
 
-  context 'コメントとお気に入りの通知' do
-    scenario '他ユーザーがユーザー1の質問にコメントすると通知する' do
+  context 'コメントの通知' do
+    scenario '他のユーザーがユーザー1の質問にコメントすると通知する' do
       act_as(anotheruser) do
         visit micropost_path(testpost)
         fill_in 'タイトル', with: 'これいいですね!'
@@ -20,7 +20,7 @@ RSpec.feature '通知機能' do
       end
     end
 
-    scenario 'カスタマーショップがユーザー1の質問にコメントする' do
+    scenario 'カスタマーショップがユーザー1の質問にコメントすると通知する' do
       act_as_company(company) do
         visit micropost_path(testpost)
         fill_in 'タイトル', with: "こちらのカスタムはいかがでしょうか!"
