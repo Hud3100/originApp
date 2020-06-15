@@ -16,8 +16,9 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
-  # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f } #support directoryをrequire
-  config.include RequestSpecHelper, type: :request #type: :requestのときにRequestHelperをinclude
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+  config.include RequestSpecHelper, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :request
 
   config.include Warden::Test::Helpers
 
