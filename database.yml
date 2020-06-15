@@ -5,3 +5,7 @@ default: &default
   username: root
   password: password
   host: web
+
+  test:
+    <<: *default
+    database: sample_test

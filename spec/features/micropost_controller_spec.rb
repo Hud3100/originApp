@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'micropost' do
   let(:user) { create(:user) }
   before do
-    login_as(user, :scope => :user)
+    login(user)
     visit new_micropost_path
   end
 
