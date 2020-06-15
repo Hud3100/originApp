@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Suggest Controller', type: :request do
+describe 'SuggestsController', type: :request do
   describe "GET #suggest" do
     before do
       get '/suggest', params: { keyword: "カム" }
