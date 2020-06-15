@@ -4,8 +4,6 @@ Rails.application.routes.draw do
     #         registrations: 'users/registrations'}
   root 'home#index'
   get '/suggest', to: "suggests#suggest"
-  post '/suggest', to: "suggests#suggest"
-
   devise_for :companies, controllers: {
     sessions:      'companies/sessions',
     passwords:     'companies/passwords',

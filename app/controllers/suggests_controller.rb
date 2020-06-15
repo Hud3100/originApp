@@ -11,9 +11,9 @@ class SuggestsController < ApplicationController
     res = JSON.parse(client.get_content(base_url, query))
     list = res["results"]["catalog"]
     @car_list = list.to_a.map { |car| car["model"] }.uniq!
-    respond_to do |format|
-      format.html
-      format.json { render suggest_path, json: @car_list }
-    end
+    render status: 200, json: @car_list
+    # respond_to do |format|
+    #   format.json { render json: @car_list }
+    # end
   end
 end

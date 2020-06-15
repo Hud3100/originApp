@@ -6,14 +6,15 @@ $(function() {
       dataType: "json",
       type: 'GET',
       cache: true,
-      data: { keyword: request.term },
-      success: function(o) {
+      data: { keyword: request.term }
+    })
+    .then(
+      function (o) {
         response(o);
       },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-        response(["なし"]);
-      }
-    });
+      function (XMLHttpRequest, textStatus, errorThrown) {
+        response([""]);
+      });
   }
   $('#form-search-car-name').autocomplete({
     source: dataList,
