@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :request do
+RSpec.describe "UsersController", type: :request do
   describe 'GET #show' do
     context 'ユーザーが存在する場合' do
       let(:user) { create :user, name: 'Takashi' }
@@ -17,7 +17,9 @@ RSpec.describe "Users", type: :request do
     end
 
     context 'ユーザーが存在しない場合' do
-      skip
+      subject { -> { get user_url 1 } }
+
+      it { is_expected.to raise_error ActiveRecord::RecordNotFound}
     end
   end
 end
