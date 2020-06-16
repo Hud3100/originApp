@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:index, :new, :create]
   def index
     # @microposts = Micropost.all.order(created_at: :desc)
     @q = Micropost.ransack(params[:q])

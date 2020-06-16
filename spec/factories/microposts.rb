@@ -5,5 +5,9 @@ FactoryBot.define do
     content { "Sampletext" }
     budget { 30 }
     car_name { "S2000" }
+
+    trait :title_invalid do
+      title { nil }
+    end
   end
 end
