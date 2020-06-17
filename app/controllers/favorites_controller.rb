@@ -2,10 +2,8 @@ class FavoritesController < ApplicationController
   def create
     favorite = current_user.favorites.build(micropost_id: params[:micropost_id])
     favorite.save
-
     micropost = Micropost.find(params[:micropost_id])
     micropost.create_notification_favorite!(current_user)
-
     redirect_to micropost_path(id: params[:micropost_id])
   end
 

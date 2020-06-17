@@ -7,6 +7,7 @@ RSpec.feature '質問の投稿とコメント機能' do
   given(:anotheruser) { create :user }
   given(:company) { create :company }
   given(:testpost) { create :micropost, user_id: testuser.id}
+  given!(:category) { create :category }
   background do
     # User.create(name: "Sample User", email: "samplecompany@company.com", password: "samplepassword")
     # Company.create!(name: "Sample Company", email: "samplecompany@company.com", password: "samplepassword")
