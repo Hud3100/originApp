@@ -1,4 +1,5 @@
 class NotificationsController < ApplicationController
+  before_action :user_signed_in?, only: :index
   def index
     # ユーザーだけでなく、companyからも呼び出したい
     @notifications = current_user.passive_notifications
