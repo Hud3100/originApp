@@ -1,0 +1,40 @@
+.jumbortron {
+  height: 500px;
+  background-image: url("<%= asset_path('main.jpeg') %>");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container-background {
+  background: rgba(255,255,255,0.7);
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.banner-container {
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  -webkit-transform: translateY(-50%) translateX(-50%);
+}
+
+.container-discription {
+  margin-top: 20px;
+  border: solid thick rgb(1,61,223);
+  border-radius: 8px;
+  padding: 20px;
+  .disc_1, .disc_2 {
+    p {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    }
+  }
+  .disc_2 {
+    margin-top: 20px;
+  }
+}

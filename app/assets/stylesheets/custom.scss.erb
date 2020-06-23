@@ -3,6 +3,7 @@
 body {
   font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
   margin: auto;
+  color: #333333;
 }
 
 #Navber {
@@ -20,8 +21,8 @@ body {
   }
 }
 
-.container {
-  margin-top: 10px;
+.jumbortron {
+  background-image: url("<%= asset_path('main.jpeg') %>");
 }
 
 .container-fluid {
@@ -34,14 +35,6 @@ body {
 
 #navmenu1 {
   display: inline-block;
-}
-
-.jumbortron {
-  height: 500px;
-  background-image: url("<%= asset_path('main.jpeg') %>");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .form-group-micropost {
