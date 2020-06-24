@@ -5,7 +5,11 @@
       <p class="lead strong">クルマのリノベはあなたの愛車とプロのカスタムショップをつなげるサイトです。</p>
       <hr class="my-4" color="#000">
       <p class="lead">
-        <a class="btn btn-primary" href=<%= new_user_registration_path %> role="button">利用登録</a>
+        <% if user_signed_in? %>
+          <a class="btn btn-primary" href=<%= new_micropost_path %> role="button">質問してみる</a>
+        <% else %>
+          <a class="btn btn-primary" href=<%= new_user_registration_path %> role="button">利用登録</a>
+        <% end %>
       </p>
       <p class="lead">
         <a class="btn btn-primary" href="#" role="button">実例をみる</a>
