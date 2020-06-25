@@ -1,21 +1,25 @@
-<div id="micropost-main">
-  <div class="micropost-summary">
-    <div class="micropost-title"><%= micropost.title %></div>
-    <div class="micropost-content">
-      <p><%= micropost.content.truncate(140, separator: '.') %></p>
-    </div>
-  </div>
-  <div class="micropost-info">
-    <div class="micropost-car-name">
-      <p>車種</p>
-      <p><%= micropost.car_name %></p>
-    </div>
-    <div class="micropost-budget">
-      <p>予算</p>
-      <p><%= micropost.budget %>万円</p>
-    </div>
-    <div class="micropost-date">
-      <p>掲載日  <%= micropost.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-    </div>
+<div id="micropost-main" class="container micropost-container">
+  <div class="row no-gutters">
+      <div class="micropost-summary col-8">
+        <div class="micropost-title">
+          <%= micropost.title %>
+        </div>
+        <div class="micropost-content">
+          <p><%= micropost.content.truncate(140, separator: '.') %></p>
+        </div>
+      </div>
+      <div class="micropost-info col-4">
+        <div class="micropost-car-name">
+          <p>車種</p>
+          <p><%= micropost.car_name %></p>
+        </div>
+        <div class="micropost-budget">
+          <p>予算</p>
+          <p><%= micropost.budget %>万円</p>
+        </div>
+        <div class="micropost-date">
+          <p>掲載日  <%= micropost.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+        </div>
+      </div>
   </div>
 </div>
