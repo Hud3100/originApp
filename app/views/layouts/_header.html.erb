@@ -1,52 +1,57 @@
 <header>
-<nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
-  <a class="navbar-brand" href=<%= root_path %>>Renovation For Car クルマのリノベ</a>
-  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="Navber">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href=<%= root_path %>>ホーム</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href=<%= microposts_path %>>実例を見る</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href=<%= new_micropost_path %>>質問してみる</a>
-      </li>
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <a class="nav-link" href=<%= user_path(id: current_user.id) %>>マイページ</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+    <a class="navbar-brand" href=<%= root_path %>>Renovation For Car クルマのリノベ</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="Navber">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href=<%= root_path %>>ホーム</a>
         </li>
         <li class="nav-item">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link log-out" %>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <a class="nav-link" href=<%= new_user_registration_path %>>利用登録</a>
+          <a class="nav-link" href=<%= microposts_path %>>実例を見る</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href=<%= new_user_session_path %>>ログイン</a>
+          <a class="nav-link" href=<%= new_micropost_path %>>質問してみる</a>
         </li>
-      <% end %>
-      <% if company_signed_in? %>
-        <li class="nav-item">
-          <a class="nav-link" href=<%= company_path(id: current_company.id) %>>カスタムショップマイページ</a>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <a class="nav-link" href=<%= new_company_registration_path %>>カスタムショップの方はこちらへ</a>
-        </li>
-      <% end %>
-    </ul>
-    <form class="form-inline my-2 my-lg-0 mr-auto">
-      <%= search_form_for @search do |f| %>
-        <% f.label :car_name_or_title_or_content %>
-        <%= f.search_field :car_name_or_title_or_content_cont, placeholder: "カスタムを検索", class: "form-control mr-sm-2" %>
-        <%= f.submit "検索", class: "btn btn-outline-success my-2 my-sm-0" %>
-      <% end %>
-    </form>
-  </div>
-</nav>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link" href=<%= user_path(id: current_user.id) %>>マイページ</a>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link log-out" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href=<%= new_user_registration_path %>>利用登録</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href=<%= new_user_session_path %>>ログイン</a>
+          </li>
+        <% end %>
+        <% if company_signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link" href=<%= company_path(id: current_company.id) %>>カスタムショップマイページ</a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href=<%= new_company_registration_path %>>カスタムショップの方向け</a>
+          </li>
+        <% end %>
+        <% if user_signed_in? %>
+          <li class="nav-item notice-icon">
+            <%= render 'notifications/mark' %>
+          </li>
+        <% end %>
+      </ul>
+      <form class="form-inline my-2 my-lg-0 mr-auto">
+        <%= search_form_for @search do |f| %>
+          <% f.label :car_name_or_title_or_content %>
+          <%= f.search_field :car_name_or_title_or_content_cont, placeholder: "カスタムを検索", class: "form-control mr-sm-2" %>
+          <%= f.submit "検索", class: "btn btn-outline-success my-2 my-sm-0" %>
+        <% end %>
+      </form>
+    </div>
+  </nav>
 </header>
