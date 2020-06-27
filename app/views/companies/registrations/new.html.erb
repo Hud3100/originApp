@@ -1,17 +1,24 @@
 <div class="container container-form">
   <div class="row">
-    <div class="form col-md-8 col-ig-6">
+    <div class="form col-md-8 col-lg-6">
       <h2 class="form-group">カスタムショップの登録</h2>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
         <div class="field form-group">
-          <%= f.label :name, class: "control-label" %><br />
+          <%= f.label :name, class: "control-label" %><span> (必須) </span>
+
           <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
         </div>
         <div class="field form-group">
-          <%= f.label :email, class: "control-label" %><br />
+          <%= f.label :email, class: "control-label" %><span> (必須) </span>
           <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
         </div>
+
+        <div class="field form-group">
+          <%= f.label :profile, class: "control-label" %><span> (必須) </span>
+          <%= f.text_area :profile, class: "form-control", rows: 10 %>
+        </div>
+
         <div class="field form-group">
           <%= f.label :password, class: "control-label" %>
           <% if @minimum_password_length %>

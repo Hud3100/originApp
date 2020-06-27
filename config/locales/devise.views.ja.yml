@@ -10,8 +10,10 @@ ja:
       company:
         name: "カスタムショップ名"
         email: "メールアドレス"
+        profile: "紹介文"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
+        remember_me: "ログインを記憶"
       comment:
         title: "タイトル"
         content: "コメント内容"
