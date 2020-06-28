@@ -1,0 +1,8 @@
+<div>
+  <p><%= comment.content %></p>
+  <% unless comment.images.blank? %>
+      <% comment.images.each do |image| %>
+        <img src = <%= image.img.url %>>
+      <% end %>
+  <% end %>
+</div>

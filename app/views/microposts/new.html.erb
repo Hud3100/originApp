@@ -1,8 +1,8 @@
 <%= javascript_include_tag "new_item.js" %>
-<div class="form-group-micropost ">
+<div class="form-group-micropost">
   <%= form_for @micropost do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
-    <div class="form_information">
+    <div class="form-information">
       <%= f.label :title, "タイトル" %>
       <%= f.text_field :title, id: "form-title", class: "form-control" %>
       <%= f.label :content, "内容(必須)" %>

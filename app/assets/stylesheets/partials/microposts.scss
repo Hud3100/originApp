@@ -17,15 +17,9 @@
   margin-top: 10px;
 }
 
-
 .micropost-title {
   color: #3300FF;
   // width: 90%;
-}
-
-.micropost-summary {
-  // width: 50%;
-
 }
 
 .micropost-content {
@@ -180,4 +174,8 @@
 
 .info {
   background-color: red($color: #000000);
+}
+
+.content-container {
+  margin-top: 20px;
 }

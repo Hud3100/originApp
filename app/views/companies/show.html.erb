@@ -1,3 +1,16 @@
-Hello <%= @company.name %>
-
-<%= link_to 'ログアウト', destroy_company_session_path, method: :delete %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="company_info_container col-md-10 col-lg-9">
+      <h1><%= @company.name %></h1>
+        <hr>
+      <p><%= @company.profile %></p>
+      <div class="company-suggestion">
+        <% if @company.comments&.any? %>
+        <% end %>
+      </div>
+      <% if company_signed_in? %>
+        <%= link_to 'ログアウト', destroy_company_session_path, method: :delete %>
+      <% end %>
+    </div>
+  </div>
+</div>

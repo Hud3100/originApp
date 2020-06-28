@@ -78,18 +78,5 @@
       <% end %>
     </div>
   </div>
-<h2>コメント一覧</h2>
-  <% @micropost.comments.each do |c| %>
-    <div>
-      <p><%= c.content %></p>
-      <% unless c.images.blank? %>
-          <% c.images.each do |image| %>
-            <img src = <%= image.img.url %>>
-          <% end %>
-      <% end %>
-    </div>
-  <% end %>
-  <%= render 'comments/comments_company' if current_company %>
-  <%= render 'comments/comments_user' if current_user %>
-<%= link_to "ホームへ戻る", root_path%>
+  <%= render 'comments/comments_index' %>
 </div>
