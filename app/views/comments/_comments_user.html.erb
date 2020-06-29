@@ -1,25 +1,46 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="form_comment col-md-8">
-      <h4>この車への提案やコメントをする</h4>
-      <%= form_with(model: [@micropost, @comment], local: true) do |f| %>
-        <%= render 'layouts/error_messages', model: f.object %>
-        <div class="form-group">
-          <%= f.label :title, "タイトル" %>
-          <%= f.text_field :title, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :content %>
-          <%= f.text_area :content , class: "form-control", rows: 10 %>
-        </div>
-        <br>
-          <%= f.fields_for :images do |i| %>
-            <%= i.file_field :img %>
-          <% end %>
+<%= javascript_include_tag 'new_item_comment.js' %>
+<div class="comment-form">
+  <div class="">
+    <div class="comment-article container">
+      <div class = "row justify-content-center">
+        <div class="col-md-8">
+          <h4>この車へ提案やコメントをする</h4>
+          <%= form_with(model: [@micropost, @comment], local: true) do |f| %>
+            <%= render 'layouts/error_messages', model: f.object %>
+            <div class="form-group">
+              <%= f.label :title, "タイトル" %>
+              <%= f.text_field :title, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :content %>
+              <%= f.text_area :content , class: "form-control", rows: 10 %>
+            </div>
+            <br>
           <%= f.hidden_field :commentable_type, value: "User" %>
           <%= f.hidden_field :commentable_id, value: current_user.id %>
-        <%= f.submit 'コメントする', class: "btn btn-primary btn-block" %>
-      <% end %>
+        </div>
+      </div>
     </div>
+    <div class="comment-attach-image-container">
+      <div class= "post__drop__box__container">
+        <div class="preview-content"></div>
+        <div class="label-content">
+          <label class="label-box" for="comment_images_attributes_0_img" id="label-box--0">
+            <pre class="label-box__text-visible">クリックして写真をアップロード</pre>
+          </label>
+        </div>
+        <div class="hidden-content">
+          <%= f.fields_for :images do |i| %>
+            <%= i.file_field :img, class: "hidden-field" %>
+            <input class="hidden-field" type="file" name="comment[images_attributes][1][img]" id="comment_images_attributes_1_img">
+            <input class="hidden-field" type="file" name="comment[images_attributes][2][img]" id="comment_images_attributes_2_img">
+            <input class="hidden-field" type="file" name="comment[images_attributes][3][img]" id="comment_images_attributes_3_img">
+            <input class="hidden-field" type="file" name="comment[images_attributes][4][img]" id="comment_images_attributes_4_img">
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <%= f.submit 'コメントする', class: "btn btn-primary btn-comment" %>
+    <% end %>
   </div>
 <div>

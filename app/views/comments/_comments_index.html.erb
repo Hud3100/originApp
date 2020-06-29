@@ -1,7 +1,7 @@
 <div class="comment-container">
   <h3>コメント一覧</h3>
   <hr>
-      <%= render @micropost.comments %>
+    <%= render @micropost.comments %>
     <%= render 'comments/comments_company' if current_company %>
     <%= render 'comments/comments_user' if current_user %>
   <%= link_to "ホームへ戻る", root_path%>

@@ -1,9 +1,9 @@
-<div class="content-container container col-md-8 col-sm-10">
+<div class="content-container container ">
   <div class="micropost-detail-container">
     <div class="micropost-detail-title">
       <h3><%= @micropost.title %></h3>
     </div>
-    <div class="micropost-table-content col-md-8 col-sm-10 no-gutters">
+    <div class="micropost-table-content no-gutters">
       <table class="table table-sm">
         <tr>
           <th scope="row">車名</th>
@@ -78,5 +78,5 @@
       <% end %>
     </div>
   </div>
-  <%= render 'comments/comments_index' %>
 </div>
+<%= render 'comments/comments_index' %>

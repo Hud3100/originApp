@@ -17,4 +17,3 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require jquery-ui/widgets/autocomplete
-//= require_tree .
