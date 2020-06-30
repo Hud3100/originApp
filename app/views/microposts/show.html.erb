@@ -1,3 +1,4 @@
+<% content_for(:title, '質問') %>
 <div class="content-container container ">
   <div class="micropost-detail-container">
     <div class="micropost-detail-title">
@@ -73,8 +74,6 @@
             <% end %>
           </p>
         <% end %>
-      <% else %>
-        <p><span>お気に入り数: </span><%= @micropost.favorites.count %></p>
       <% end %>
     </div>
   </div>
