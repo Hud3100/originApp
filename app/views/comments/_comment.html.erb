@@ -1,9 +1,15 @@
-<div>
-  <h4><%= comment.title %></h4>
-  <p><%= comment.content %></p>
-  <% unless comment.images.blank? %>
-      <% comment.images.each do |image| %>
-        <img src = <%= image.img.url %>>
-      <% end %>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <h2>コメント一覧</h2>
+          <div>
+          <% @micropost.comments.each do |comment| %>
+            <h4><%= comment.title %></h4>
+            <p><%= comment.content %></p>
+            <%= image_tag comment.images.first.img.url, class: "d-block w-100", size: "400x300" %>
+
+          </div>
+          <% end %>
+    </div>
+  </div>
 </div>

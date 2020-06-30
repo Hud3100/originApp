@@ -1,10 +1,25 @@
-<div class="comment-container  mx-auto">
+<div class="comment-container mx-auto">
   <h3>コメント一覧</h3>
   <hr>
-
-
-    <%= render @micropost.comments %>
-    <%= render 'comments/comments_company' if current_company %>
-    <%= render 'comments/comments_user' if current_user %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <h2>コメント一覧</h2>
+        <div>
+          <% @micropost.comments.each do |comment| %>
+            <h4><%= comment.title %></h4>
+            <p><%= comment.content %></p>
+            <% unless comment.images.blank? %>
+              <% comment.images.each do |image| %>
+                <img src = <%= image.img.url %>>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= render 'comments/comments_company' if current_company %>
+  <%= render 'comments/comments_user' if current_user %>
   <%= link_to "ホームへ戻る", root_path%>
 </div>
