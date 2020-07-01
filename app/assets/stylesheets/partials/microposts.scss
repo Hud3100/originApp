@@ -5,16 +5,12 @@
   background: #F2F2F2;
   padding: 7px;
   display: flex;
+  margin-top: 40px;
 }
 
 .micropost-container {
   margin-top: 20px;
   width: 80%;
-}
-
-.micropost-list {
-  margin: 0 auto;
-  margin-top: 10px;
 }
 
 .micropost-title {
@@ -169,10 +165,6 @@
 
 .micropost-detail-content {
   width: 50%;
-}
-
-.carousel {
-  width: 100%;
 }
 
 .info {

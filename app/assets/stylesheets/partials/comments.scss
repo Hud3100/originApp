@@ -3,9 +3,21 @@
 }
 
 .comment-list {
-  margin-top: 20px;
-  padding: 10px;
-  border: groove, 1px, #3300FF;
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px #95ccff;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+
+.comment-list:last-child {
+  display: none;
+}
+.comment-sender > p {
+  padding-left: 5px;
+  background: #FFF;
+  border-left: solid 3px #95ccff;
 }
 
 .comment-attach-image-container {
@@ -21,4 +33,5 @@
 
 .comment-form {
   text-align: center;
+  margin-top: 40px;
 }

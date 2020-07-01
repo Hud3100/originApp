@@ -1,11 +1,6 @@
 <div class="container">
-  <h2 class="font-weight-bold">投稿一覧</h2>
-  <div class="micropost_list d-flex align-items-center">
-    <div class="ml-auto posts_button">
-      <a class="btn btn-outline-info" href=<%= new_micropost_path %> role="button">投稿</a>
-    </div>
-  </div>
   <div class="micropost-list col-lg-8">
+  <h2 class="font-weight-bold">投稿一覧</h2>
     <%= render @microposts %>
   </div>
 </div>
