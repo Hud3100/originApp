@@ -1,6 +1,11 @@
 .comment-container {
-  text-align: center;
   margin-top: 20px;
+}
+
+.comment-list {
+  margin-top: 20px;
+  padding: 10px;
+  border: groove, 1px, #3300FF;
 }
 
 .comment-attach-image-container {
@@ -12,4 +17,8 @@
 .btn-comment {
   width: 20%;
   margin-bottom: 20px;
+}
+
+.comment-form {
+  text-align: center;
 }
