@@ -1,5 +1,8 @@
 .comment-container {
   margin-top: 20px;
+  .comment-list:last-child {
+    display: none;
+  }
 }
 
 .comment-list {
@@ -11,9 +14,6 @@
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 
-.comment-list:last-child {
-  display: none;
-}
 .comment-sender > p {
   padding-left: 5px;
   background: #FFF;

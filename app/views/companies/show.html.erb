@@ -1,12 +1,43 @@
-<div class="container">
+<div class="container company-info">
   <div class="row justify-content-center">
     <div class="company_info_container col-md-10 col-lg-9">
       <h1><%= @company.name %></h1>
         <hr>
       <p><%= @company.profile %></p>
       <div class="company-suggestion">
-        <% if @company.comments&.any? %>
-        <% end %>
+        <div class="mx-auto">
+          <hr>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-10">
+                <h2>提案一覧</h2>
+                <% @company.comments.each do |comment| %>
+                  <div class="comment-list">
+                    <span class="comment-to">
+                      <%= link_to "#{comment.micropost.title.truncate(20, separator: '.')}への提案",
+                          micropost_path(comment.micropost) %>
+                    </span>
+                    <p class="comment-title">
+                      件名: <%= comment.title %>
+                    </p>
+                    <p class="comment-content">
+                      内容: <%= comment.content %>
+                    </p>
+                    <div class="carousel slide" data-ride="carousel" data-pause="hover" data-interval="3000">
+                      <div class="carousel-inner">
+                        <% comment.images.each_with_index do |image, i| %>
+                          <div class="carousel-item <%= "active" if i.zero? %>">
+                            <img src="<%= image.img.url %>" width="400" height="300">
+                          </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <% if company_signed_in? %>
         <%= link_to 'ログアウト', destroy_company_session_path, method: :delete %>
