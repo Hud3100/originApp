@@ -29,8 +29,8 @@
       </table>
     </div>
     <div class="row micropost-detail-row">
-      <div class="micropost-images-container col-lg-5 col-sm-12">
-        <% if @micropost.images&.any? %>
+      <% if @micropost.images&.any? %>
+        <div class="micropost-images-container col-lg-5 col-sm-12">
           <div id="example-2" class="carousel slide carousel-fade" data-ride="carousel" data-pause="hover">
             <ol class="carousel-indicators">
               <% @micropost.images.count.times do |count| %>
@@ -53,8 +53,8 @@
               </a>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
       <div class="micropost-detail-content col-lg-7 col-sm-12">
         <%= @micropost.content %>
       </div>

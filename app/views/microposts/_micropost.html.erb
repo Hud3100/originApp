@@ -2,7 +2,7 @@
   <div class="row no-gutters">
       <div class="micropost-summary col-8">
         <div class="micropost-title">
-          <%= micropost.title %>
+          <%= link_to micropost.title, micropost %>
         </div>
         <div class="micropost-content">
           <p><%= micropost.content.truncate(140, separator: '.') %></p>
