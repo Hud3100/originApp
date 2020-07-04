@@ -9,4 +9,10 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visitedable_id', dependent: :destroy, as: :visitedable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def self.guest
+    find_or_create_by!(name: 'sample user', email: 'guestuser@guest.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
 end

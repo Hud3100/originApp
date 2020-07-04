@@ -10,6 +10,7 @@
           <a class="btn btn-primary" href=<%= new_micropost_path %> role="button">質問してみる</a>
         <% else %>
           <a class="btn btn-primary" href=<%= new_user_registration_path %> role="button">利用登録</a>
+          <%= link_to 'ゲストログインはこちら', users_guest_sign_in_path, { method: :post, class: "btn btn-primary"} %>
         <% end %>
       </p>
       <p class="lead">
