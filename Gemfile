@@ -24,6 +24,7 @@ gem 'warden'
 gem 'ransack'
 gem 'httpclient'
 gem 'jquery-ui-rails'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
