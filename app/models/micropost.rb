@@ -15,19 +15,19 @@ class Micropost < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  def create_notification_comment_for_user!(current_user, comment_id, commentable_type)
+  def create_notification_comment_for_user!(current_user, comment_id, commentable_type, visitedable_id)
     temp_ids = Comment.select(:commentable_id, :commentable_type).where(micropost_id: id).where.not(commentable_id: current_user.id, commentable_type: commentable_type).distinct
     temp_ids.each do |temp_id|
-      save_notification_comment_for_user!(current_user, comment_id, temp_id)
+      save_notification_comment_for_user!(current_user, comment_id, temp_id, visitedable_id)
     end
-    save_notification_comment_for_user!(current_user, comment_id, user_id) if temp_ids.blank?
+    save_notification_comment_for_user!(current_user, comment_id, user_id, visitedable_id) if temp_ids.blank?
   end
 
-  def save_notification_comment_for_user!(current_user, comment_id, temp_id)
+  def save_notification_comment_for_user!(current_user, comment_id, temp_id, visitedable_id)
     notification = current_user.active_notifications.new(
       micropost_id: id,
       comment_id: comment_id,
-      visitedable_id: temp_id,
+      visitedable_id: visitedable_id,
       visitedable_type: "User",
       action: 'comment'
     )
