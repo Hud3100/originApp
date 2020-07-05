@@ -1,3 +1,7 @@
+.micropost-form-info {
+  margin-top: 20px;
+}
+
 .micropost-list {
   margin: 0 auto;
   margin-top: 10px;
@@ -67,6 +71,16 @@
   width: 1275px;
   margin: auto;
   margin-top: 10px;
+}
+
+.micropost-form-information {
+  .form-group {
+    width: 60%;
+  }
+
+  .forom-control {
+    margin: auto;
+  }
 }
 
 .post__drop__box__container {
