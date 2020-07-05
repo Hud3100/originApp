@@ -5,10 +5,10 @@ class CommentsController < ApplicationController
     if @comment.save
       if current_user
         @comment.commentable_id = current_user.id
-        @micropost.create_notification_comment_for_user!(current_user, @comment.id, "user")
+        @micropost.create_notification_comment_for_user!(current_user, @comment.id, "User")
       elsif current_company
         @comment.commentable_id = current_company.id
-        @micropost.create_notification_comment!(current_company, @comment.id, "company")
+        @micropost.create_notification_comment!(current_company, @comment.id, "company", @micropost.user.id)
       end
       flash[:success] = 'コメントが投稿されました。'
       redirect_to @micropost

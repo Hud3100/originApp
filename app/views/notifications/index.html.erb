@@ -1,4 +1,4 @@
-<% notifications = @notifications.where.not(visitorable_type: 'User', visitorable_id: current_user.id) %>
+<% notifications = @notifications %>
 <% if notifications.exists? %>
   <div class="notification-container">
     <%= render notifications %>
