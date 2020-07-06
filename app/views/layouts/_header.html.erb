@@ -34,7 +34,8 @@
           <li class="nav-item">
             <a class="nav-link" href=<%= company_path(id: current_company.id) %>>カスタムショップマイページ</a>
           </li>
-        <% else %>
+        <% end %>
+        <% if !company_signed_in? && !user_signed_in? %>
           <li class="nav-item">
             <a class="nav-link" href=<%= new_company_registration_path %>>カスタムショップの方向け</a>
           </li>
