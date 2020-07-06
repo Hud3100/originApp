@@ -39,7 +39,7 @@ RSpec.describe Favorite, type: :model do
       fav = user.favorites.create(
         micropost_id: micropost.id
       )
-      expect { user.destroy }.to change{ Favorite.count }.by(-1)
+      expect { user.destroy }.to change(Favorite, :count).by(-1)
     end
 
     it "Micropostモデルに属する" do
@@ -52,7 +52,7 @@ RSpec.describe Favorite, type: :model do
       fav = user.favorites.create(
         micropost_id: micropost.id
       )
-      expect { micropost.destroy }.to change{ Favorite.count }.by(-1)
+      expect { micropost.destroy }.to change(Favorite, :count).by(-1)
     end
   end
 end

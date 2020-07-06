@@ -1,12 +1,14 @@
 require 'rails_helper'
 
 RSpec.feature '質問の投稿とコメント機能' do
-  given(:testuser) { create :user,
-                   name: "Test User",
-                   email: "testuser@user.com"}
+  given(:testuser) do
+    create :user,
+           name: "Test User",
+           email: "testuser@user.com"
+  end
   given(:anotheruser) { create :user }
   given(:company) { create :company }
-  given(:testpost) { create :micropost, user_id: testuser.id}
+  given(:testpost) { create :micropost, user_id: testuser.id }
   given!(:category) { create :category }
   background do
     # User.create(name: "Sample User", email: "samplecompany@company.com", password: "samplepassword")
@@ -23,7 +25,7 @@ RSpec.feature '質問の投稿とコメント機能' do
         fill_in 'form-search-car-name', with: "オデッセイ"
         check '内装'
         # attach_file "micropost[images_attributes][1][img]", "spec/fixtures/test.jpg"
-        expect { click_on '投稿する' }.to change { Micropost.count }.by(1)
+        expect { click_on '投稿する' }.to change(Micropost, :count).by(1)
         expect(page).to have_content "投稿されました"
       end
     end

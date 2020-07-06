@@ -90,8 +90,9 @@ RSpec.describe User, type: :model do
     it "ユーザーを削除すると,そのユーザーがもつMicropostも削除される" do
       user.microposts.create(
         title: "Sample",
-        content: "Sample Text")
-      expect { user.destroy }.to change{ Micropost.count }.by(-1)
+        content: "Sample Text"
+      )
+      expect { user.destroy }.to change(Micropost, :count).by(-1)
     end
 
     it "Commentモデルをもつ" do
@@ -107,7 +108,7 @@ RSpec.describe User, type: :model do
         micropost_id: micropost.id
       )
       expect(comment).to be_valid
-      expect { user.destroy }.to change{ Comment.count }.by(-1)
+      expect { user.destroy }.to change(Comment, :count).by(-1)
     end
   end
 
@@ -118,7 +119,7 @@ RSpec.describe User, type: :model do
         email: "sample@sample.com",
         password: "password"
       )
-      expect { user.destroy }.to change{ User.count }.by(-1)
+      expect { user.destroy }.to change(User, :count).by(-1)
     end
   end
 end

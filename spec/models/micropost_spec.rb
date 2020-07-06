@@ -77,11 +77,11 @@ RSpec.describe Micropost, type: :model do
 
     it "投稿を削除してもUserは削除されない" do
       micropost = user.microposts.create(
-                    title: "Sample",
-                    content: "Sample Post"
-                    )
-      expect { micropost.destroy }.to change{ Micropost.count }.by(-1)
-      expect { micropost.destroy }.not_to change{ User.count }
+        title: "Sample",
+        content: "Sample Post"
+      )
+      expect { micropost.destroy }.to change(Micropost, :count).by(-1)
+      expect { micropost.destroy }.not_to change(User, :count)
     end
 
     it "Imageモデルをもつ" do
@@ -107,7 +107,7 @@ RSpec.describe Micropost, type: :model do
       micropost.images.create(
         img: image
       )
-      expect { micropost.destroy }.to change{ Image.count }.by(-1)
+      expect { micropost.destroy }.to change(Image, :count).by(-1)
     end
 
     it "Commentモデルをもつ" do
@@ -121,11 +121,12 @@ RSpec.describe Micropost, type: :model do
         content: "Sample Post"
       )
       comment = micropost.comments.create(
-                title: "sample comment",
-                content: "sample comment content",
-                commentable_type: user.class,
-                commentable_id: user.id)
-      expect { micropost.destroy }.to change{ Comment.count }.by(-1)
+        title: "sample comment",
+        content: "sample comment content",
+        commentable_type: user.class,
+        commentable_id: user.id
+      )
+      expect { micropost.destroy }.to change(Comment, :count).by(-1)
     end
 
     it "Favoritesモデルに属する" do
@@ -141,7 +142,7 @@ RSpec.describe Micropost, type: :model do
       favorite = another_user.favorites.create(
         micropost_id: micropost.id
       )
-      expect { micropost.destroy }.to change{ Favorite.count }.by(-1)
+      expect { micropost.destroy }.to change(Favorite, :count).by(-1)
     end
 
     it "notificationモデルをもつ" do
@@ -153,9 +154,9 @@ RSpec.describe Micropost, type: :model do
       micropost = user.microposts.create(
         title: "Sample",
         content: "Sample Post"
-        )
+      )
       notice = micropost.create_notification_favorite!(another_user)
-      expect { micropost.destroy }.to change{ Notification.count }.by(-1)
+      expect { micropost.destroy }.to change(Notification, :count).by(-1)
     end
 
     it "MicropostCategoryRelationをもつ" do
@@ -169,7 +170,7 @@ RSpec.describe Micropost, type: :model do
         content: "Sample Post",
         category_ids: category.id
       )
-      expect { micropost.destroy }.to change{ MicropostCategoryRelation.count }.by(-1)
+      expect { micropost.destroy }.to change(MicropostCategoryRelation, :count).by(-1)
     end
 
     it "Categoryモデルをもつ" do
@@ -183,9 +184,8 @@ RSpec.describe Micropost, type: :model do
         content: "Sample Post",
         category_ids: category.id
       )
-      expect { micropost.destroy }.not_to change{ Category.count }
+      expect { micropost.destroy }.not_to change(Category, :count)
     end
-
   end
 
   context "削除:" do
@@ -193,8 +193,8 @@ RSpec.describe Micropost, type: :model do
       micropost = user.microposts.create(
         title: "Sample",
         content: "Sample Post"
-        )
-      expect { micropost.destroy }.to change{ Micropost.count }.by(-1)
+      )
+      expect { micropost.destroy }.to change(Micropost, :count).by(-1)
     end
   end
 end

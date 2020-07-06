@@ -45,7 +45,7 @@ RSpec.describe Category, type: :model do
         content: "sample content",
         category_ids: category.id
       )
-      expect { micropost.destroy }.not_to change{ Category.count }
+      expect { micropost.destroy }.not_to change(Category, :count)
     end
   end
 end

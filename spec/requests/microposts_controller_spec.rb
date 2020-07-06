@@ -7,6 +7,7 @@ RSpec.describe "MicropostsController", type: :request do
   before do
     sign_in user
   end
+
   describe "GET #index" do
     it 'リクエストが成功すること' do
       get microposts_url
@@ -71,7 +72,12 @@ RSpec.describe "MicropostsController", type: :request do
       end
 
       it '質問の投稿に失敗すること' do
-        expect { post microposts_url, params: { micropost: FactoryBot.attributes_for(:micropost, :title_invalid) } }.to_not change(Micropost, :count)
+        expect do
+          post microposts_url,
+               params: {
+                 micropost: FactoryBot.attributes_for(:micropost, :title_invalid),
+               }
+        end.not_to change(Micropost, :count)
       end
 
       it 'エラーが表示されること' do

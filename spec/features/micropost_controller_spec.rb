@@ -32,7 +32,7 @@ RSpec.feature 'micropost' do
     visit new_micropost_path
     fill_in 'form-title', with: "質問のタイトル"
     fill_in 'form-content', with: "質問の内容"
-    click_on ('投稿する')
+    click_on '投稿する'
     expect(page).to have_content "投稿されました"
   end
 end

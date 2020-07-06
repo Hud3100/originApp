@@ -82,7 +82,7 @@ RSpec.describe Company, type: :model do
         micropost_id: micropost.id
       )
       expect(comment).to be_valid
-      expect { company.destroy }.to change{ Comment.count }.by(-1)
+      expect { company.destroy }.to change(Comment, :count).by(-1)
     end
   end
 
@@ -93,7 +93,7 @@ RSpec.describe Company, type: :model do
         email: "samplecompany@company.com",
         password: "password"
       )
-      expect { company.destroy }.to change{ Company.count }.by(-1)
+      expect { company.destroy }.to change(Company, :count).by(-1)
     end
   end
 end

@@ -19,7 +19,7 @@ RSpec.describe "CompaniesController", type: :request do
     context 'カンパニーが存在しない場合' do
       subject { -> { get company_url 1 } }
 
-      it { is_expected.to raise_error ActiveRecord::RecordNotFound}
+      it { is_expected.to raise_error ActiveRecord::RecordNotFound }
     end
   end
 end

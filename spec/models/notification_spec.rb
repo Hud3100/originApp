@@ -6,19 +6,19 @@ RSpec.describe Notification, type: :model do
   let(:micropost) { create(:micropost) }
   context "お気に入りの通知:" do
     it "ユーザーが投稿にお気に入り登録したときにNotificationモデルが生成される" do
-      expect { micropost.create_notification_favorite!(user) }.to change{ Notification.count }.by(1)
+      expect { micropost.create_notification_favorite!(user) }.to change(Notification, :count).by(1)
     end
   end
 
   context "クラスメソッドのテスト:" do
     it "ユーザーが投稿にコメントしたときNotificationモデルが生成される" do
       comment = user.comments.create(micropost_id: micropost.id)
-      expect { micropost.create_notification_comment_for_user!(user, comment.id, "user", micropost.user.id) }.to change{ Notification.count }.by(1)
+      expect { micropost.create_notification_comment_for_user!(user, comment.id, "user", micropost.user.id) }.to change(Notification, :count).by(1)
     end
 
     it "カスタムショップが投稿にコメントしたときNotificationモデルが生成される" do
       comment = company.comments.create(micropost_id: micropost.id)
-      expect { micropost.create_notification_comment!(company, comment.id, "company", micropost.user.id) }.to change{ Notification.count }.by(1)
+      expect { micropost.create_notification_comment!(company, comment.id, "company", micropost.user.id) }.to change(Notification, :count).by(1)
     end
   end
 end

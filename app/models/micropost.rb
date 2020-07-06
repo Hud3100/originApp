@@ -38,9 +38,9 @@ class Micropost < ApplicationRecord
   end
 
   def create_notification_comment!(current_company, comment_id, commentable_type, visitedable_id)
-    temp_ids = Comment.select(:commentable_id, :commentable_type)
-    .where(micropost_id: id)
-    .where.not(commentable_id: current_company.id, commentable_type: commentable_type).distinct
+    temp_ids = Comment.select(:commentable_id, :commentable_type).
+      where(micropost_id: id).
+      where.not(commentable_id: current_company.id, commentable_type: commentable_type).distinct
     temp_ids.each do |temp_id|
       save_notification_comment!(current_company, comment_id, temp_id, visitedable_id)
     end

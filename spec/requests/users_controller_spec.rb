@@ -19,7 +19,7 @@ RSpec.describe "UsersController", type: :request do
     context 'ユーザーが存在しない場合' do
       subject { -> { get user_url 1 } }
 
-      it { is_expected.to raise_error ActiveRecord::RecordNotFound}
+      it { is_expected.to raise_error ActiveRecord::RecordNotFound }
     end
   end
 end

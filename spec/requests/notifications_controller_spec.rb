@@ -5,6 +5,7 @@ RSpec.describe "NotificationsController", type: :request do
   before do
     sign_in user
   end
+
   describe "GET #index" do
     it 'リクエストが成功すること' do
       get notifications_url

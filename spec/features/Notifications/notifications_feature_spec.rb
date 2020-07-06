@@ -5,7 +5,7 @@ RSpec.feature '通知機能' do
   given(:anotheruser) { create :user }
   given(:anotheruser3) { create :user }
   given(:company) { create :company }
-  given(:testpost) { create :micropost, user_id: testuser.id}
+  given(:testpost) { create :micropost, user_id: testuser.id }
 
   context 'コメントの通知' do
     scenario '他のユーザーがユーザー1の質問にコメントすると通知する' do
@@ -13,7 +13,7 @@ RSpec.feature '通知機能' do
         visit micropost_path(testpost)
         fill_in 'タイトル', with: 'これいいですね!'
         fill_in 'コメント内容', with: 'そのカスタム僕もやってみたい!'
-        expect { click_on 'コメントする' }.to change { Notification.count }.by(1)
+        expect { click_on 'コメントする' }.to change(Notification, :count).by(1)
         expect(Notification.first.visitorable_user.name).to eq anotheruser.name
         expect(Notification.first.visitedable_user.name).to eq testuser.name
         expect(Notification.first.action).to eq "comment"
@@ -25,7 +25,7 @@ RSpec.feature '通知機能' do
         visit micropost_path(testpost)
         fill_in 'タイトル', with: "こちらのカスタムはいかがでしょうか!"
         fill_in 'コメント内容', with: "エギゾーストのカスタムは当社自慢のオーダーメイドのマフラーがいいですよ!"
-        expect { click_on 'コメントする' }.to change { Notification.count }.by(1)
+        expect { click_on 'コメントする' }.to change(Notification, :count).by(1)
         expect(Notification.first.visitorable_company.name).to eq company.name
         expect(Notification.first.visitedable_user.name).to eq testuser.name
         expect(Notification.first.action).to eq "comment"

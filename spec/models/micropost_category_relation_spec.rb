@@ -1,8 +1,8 @@
 require 'rails_helper'
 RSpec.describe MicropostCategoryRelation, type: :model do
-  let(:user){ create(:user) }
-  let(:micropost){ create(:micropost) }
-  let(:category){ create(:category) }
+  let(:user) { create(:user) }
+  let(:micropost) { create(:micropost) }
+  let(:category) { create(:category) }
   context "モデル生成:" do
     it "投稿がカテゴリーと紐づくとき、中間テーブルが生成される" do
       micropost = user.microposts.new(
@@ -10,7 +10,7 @@ RSpec.describe MicropostCategoryRelation, type: :model do
         content: "Sample Content",
         category_ids: category.id
       )
-      expect{ micropost.save }.to change{ MicropostCategoryRelation.count }.by(1)
+      expect { micropost.save }.to change(MicropostCategoryRelation, :count).by(1)
     end
 
     it "Micropost_idが無効なら中間テーブルは生成されない" do
@@ -47,7 +47,7 @@ RSpec.describe MicropostCategoryRelation, type: :model do
   context "削除:" do
     it "投稿が削除された時、中間テーブルも削除される" do
       micropost = create(:micropost, category_ids: category.id)
-      expect { micropost.destroy }.to change{ MicropostCategoryRelation.count }.by(-1)
+      expect { micropost.destroy }.to change(MicropostCategoryRelation, :count).by(-1)
     end
 
     it "中間テーブル(関連付け)が削除されてもMicropostは削除されない" do
@@ -55,7 +55,7 @@ RSpec.describe MicropostCategoryRelation, type: :model do
         micropost_id: micropost.id,
         category_id: category.id
       )
-      expect { ref.destroy }.not_to change{ Micropost.count }
+      expect { ref.destroy }.not_to change(Micropost, :count)
     end
   end
 end
