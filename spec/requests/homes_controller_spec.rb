@@ -29,7 +29,7 @@ RSpec.describe "HomesController" do
       end
     end
 
-    context 'カスタマーショップがログインしている場合' do
+    context 'カスタムショップがログインしている場合' do
       it 'マイページのリンクが表示される' do
         sign_in company
         get root_url
@@ -37,10 +37,10 @@ RSpec.describe "HomesController" do
       end
     end
 
-    context 'カスタマーショップがログアウトしている場合' do
-      it 'カスタマーショップの方はこちらからのリンクが表示される' do
+    context 'カスタムショップがログアウトしている場合' do
+      it 'カスタムショップの方向けのリンクが表示される' do
         get root_url
-        expect(response.body).to include "カスタマーショップの方はこちらへ"
+        expect(response.body).to include "カスタムショップの方向け"
       end
     end
   end

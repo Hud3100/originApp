@@ -64,13 +64,13 @@
         <% if @micropost.favorited_by?(current_user) %>
             <p>
               <%= link_to(micropost_favorites_path(@micropost.id), method: :delete) do %>
-                <i class="fas fa-thumbs-up unlike-btn"></i>
+                <i id="unlike-btn" class="fas fa-thumbs-up unlike-btn"></i>
               <% end %>
             </p>
         <% else %>
           <p>
             <%= link_to(micropost_favorites_path(@micropost.id), method: :post) do %>
-              <i class="fas fa-thumbs-up like-btn"></i>
+              <i id="like-btn" class="fas fa-thumbs-up like-btn"></i>
             <% end %>
           </p>
         <% end %>

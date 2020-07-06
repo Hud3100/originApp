@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'カンパニーのログインとログアウト' do
+RSpec.feature 'カスタムショップのログインとログアウト' do
   let(:testcompany) { create(:company, email: "testcompany@company.com") }
   background do
     Company.create!(name: "Sample Company", email: "samplecompany@company.com", password: "samplepassword")
@@ -8,7 +8,7 @@ RSpec.feature 'カンパニーのログインとログアウト' do
 
   scenario 'ログインする' do
     visit new_company_session_path
-    fill_in 'メールアドレス', with: 'samplecompany@company.com'
+    fill_in 'email', with: 'samplecompany@company.com'
     fill_in 'company_password', with: "samplepassword"
     find('.btn-login').click
     expect(page).to have_content 'ログインしました'
@@ -16,7 +16,7 @@ RSpec.feature 'カンパニーのログインとログアウト' do
 
   scenario 'メールアドレスを間違えるとエラーが表示される' do
     visit new_company_session_path
-    fill_in 'メールアドレス', with: 'anothercompany@company.com'
+    fill_in 'email', with: 'anothercompany@company.com'
     fill_in 'company_password', with: "samplepassword"
     find('.btn-login').click
     expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
@@ -24,7 +24,7 @@ RSpec.feature 'カンパニーのログインとログアウト' do
 
   scenario 'パスワードを間違えるとエラーが表示される' do
     visit new_company_session_path
-    fill_in 'メールアドレス', with: 'samplecompany@company.com'
+    fill_in 'email', with: 'samplecompany@company.com'
     fill_in 'company_password', with: "wrongpassword"
     find('.btn-login').click
     expect(page).to have_content 'メールアドレスまたはパスワードが違います。'

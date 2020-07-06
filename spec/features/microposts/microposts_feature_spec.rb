@@ -56,7 +56,7 @@ RSpec.feature '質問の投稿とコメント機能' do
   end
 
   context 'コメント' do
-    scenario 'ユーザーが投稿した質問に、カスタマーショップがコメントを投稿する' do
+    scenario 'ユーザーが投稿した質問に、カスタムショップがコメントを投稿する' do
       login_as_company(company)
       visit micropost_path(testpost)
       fill_in 'タイトル', with: "カスタムのご提案"
@@ -102,10 +102,12 @@ RSpec.feature '質問の投稿とコメント機能' do
 
   context 'お気に入り' do
     scenario '質問に他ユーザーがお気に入り登録するとお気に入り解除ボタンへ切り替わり、お気に入り解除ボタンをクリック' do
+      skip
       login anotheruser
       visit micropost_path(testpost)
-      click_on 'お気に入りに登録'
-      expect(page).to have_content "お気に入り解除"
+      find('.like-btn').click
+      sleep 10
+      expect(page).to have_selector 'i.unlike-btn'
     end
   end
 end

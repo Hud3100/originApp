@@ -44,7 +44,7 @@ class Micropost < ApplicationRecord
     temp_ids.each do |temp_id|
       save_notification_comment!(current_company, comment_id, temp_id, visitedable_id)
     end
-    save_notification_comment!(current_company, comment_id, user_id) if temp_ids.blank?
+    save_notification_comment!(current_company, comment_id, user_id, visitedable_id) if temp_ids.blank?
   end
 
   def save_notification_comment!(current_company, comment_id, temp_id, visitedable_id)

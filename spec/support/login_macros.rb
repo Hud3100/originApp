@@ -20,7 +20,7 @@ module LoginMacros
 
   def login_as_company(company)
     visit new_company_session_path
-    fill_in 'メールアドレス', with: company.email
+    fill_in 'email', with: company.email
     fill_in 'パスワード', with: "password"
     find('.btn-login').click
     expect(page).to have_content 'ログインしました'
