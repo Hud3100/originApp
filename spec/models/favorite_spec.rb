@@ -36,9 +36,7 @@ RSpec.describe Favorite, type: :model do
     end
 
     it "ユーザーが削除されるとお気に入りも削除される" do
-      fav = user.favorites.create(
-        micropost_id: micropost.id
-      )
+      user.favorites.create(micropost_id: micropost.id)
       expect { user.destroy }.to change(Favorite, :count).by(-1)
     end
 
@@ -49,9 +47,7 @@ RSpec.describe Favorite, type: :model do
     end
 
     it "投稿が削除されると、お気に入りも削除される" do
-      fav = user.favorites.create(
-        micropost_id: micropost.id
-      )
+      user.favorites.create(micropost_id: micropost.id)
       expect { micropost.destroy }.to change(Favorite, :count).by(-1)
     end
   end

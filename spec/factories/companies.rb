@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :company, class: Company do
+  factory :company, class: "Company" do
     sequence(:name) { Faker::Name.name }
     sequence(:email) { Faker::Internet.email }
     sequence(:password) { "password" }

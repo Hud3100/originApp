@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :micropost, class: Micropost do
+  factory :micropost, class: "Micropost" do
     association :user
     title { "sample" }
     content { "Sampletext" }

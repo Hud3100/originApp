@@ -120,7 +120,7 @@ RSpec.describe Micropost, type: :model do
         title: "Sample",
         content: "Sample Post"
       )
-      comment = micropost.comments.create(
+      micropost.comments.create(
         title: "sample comment",
         content: "sample comment content",
         commentable_type: user.class,
@@ -139,9 +139,7 @@ RSpec.describe Micropost, type: :model do
         title: "Sample",
         content: "Sample Post"
       )
-      favorite = another_user.favorites.create(
-        micropost_id: micropost.id
-      )
+      another_user.favorites.create(micropost_id: micropost.id)
       expect { micropost.destroy }.to change(Favorite, :count).by(-1)
     end
 
@@ -155,7 +153,7 @@ RSpec.describe Micropost, type: :model do
         title: "Sample",
         content: "Sample Post"
       )
-      notice = micropost.create_notification_favorite!(another_user)
+      micropost.create_notification_favorite!(another_user)
       expect { micropost.destroy }.to change(Notification, :count).by(-1)
     end
 

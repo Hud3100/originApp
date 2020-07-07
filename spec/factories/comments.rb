@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :comment, class: Comment do
+  factory :comment, class: "Comment" do
     association :user
     title { "Sample Comment" }
     content { "そのカスタムいいなあ" }

@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :favorite, class: Favorite do
+  factory :favorite, class: "Favorite" do
     association :user
     user_id { 1 }
     micropost_id { 1 }

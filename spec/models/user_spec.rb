@@ -50,7 +50,7 @@ RSpec.describe User, type: :model do
     end
 
     it "同じ名前のユーザーの複数登録不可" do
-      user = User.create(
+      User.create(
         name: "Test User",
         email: "user@sample.com",
         password: "password"
@@ -65,7 +65,7 @@ RSpec.describe User, type: :model do
     end
 
     it "同じメールアドレスの複数ユーザーの登録は不可" do
-      user = User.create(
+      User.create(
         name: "Test User",
         email: "user@sample.com",
         password: "password"

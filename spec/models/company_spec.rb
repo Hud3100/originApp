@@ -15,7 +15,6 @@ RSpec.describe Company, type: :model do
     it "パスワードがないカンパニーは無効" do
       company = Company.new(
         email: "samplecompany@company.com",
-        email: "samplecompany@company.com",
         name: "Sample Company",
       )
       expect(company).not_to be_valid
@@ -38,7 +37,7 @@ RSpec.describe Company, type: :model do
     end
 
     it "同じ企業名のカンパニーの複数登録不可" do
-      company = Company.create(
+      Company.create(
         name: "Sample Company",
         email: "company@company.com",
         password: "password"
@@ -53,7 +52,7 @@ RSpec.describe Company, type: :model do
     end
 
     it "同じメールアドレスのカンパニーの複数登録は不可" do
-      company = Company.create(
+      Company.create(
         name: "Sample Company",
         email: "company@company.com",
         password: "password"

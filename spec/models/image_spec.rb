@@ -32,11 +32,7 @@ RSpec.describe Image, type: :model do
       expect(t.class_name).to eq "Imageable"
     end
 
-    it "画像を削除しても投稿は削除されない" do
-      skip
-    end
-
-    it "画像を削除してもコメントは削除されない" do
+    it "画像を削除後、投稿あるいはコメントは削除されない" do
       skip
     end
   end
