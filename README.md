@@ -51,6 +51,9 @@ CircleCI
 
 #### AWS構成図
 
+![AWS 構成図](https://user-images.githubusercontent.com/62746943/86996438-a1d5be80-c1e6-11ea-990b-598d5924ffd3.png)
+
+
 #### ER図
 
 ![sample](https://user-images.githubusercontent.com/62746943/86989276-0e47c200-c1d5-11ea-9383-099215fd3166.png)
